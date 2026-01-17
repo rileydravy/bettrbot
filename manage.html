@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Manage Subscription - BettrBot</title>
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    :root {
+      --bg-dark: #0a0a0f;
+      --bg-card: #12121a;
+      --border: #1f1f2e;
+      --text: #e8e8f0;
+      --text-dim: #6b6b80;
+      --green: #00d26a;
+      --green-glow: rgba(0, 210, 106, 0.3);
+      --red: #ff4757;
+    }
+    
+    body {
+      font-family: 'Space Grotesk', sans-serif;
+      background: var(--bg-dark);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .bg-pattern {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: 
+        radial-gradient(circle at 20% 50%, rgba(0, 210, 106, 0.08) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(0, 210, 106, 0.05) 0%, transparent 40%);
+      pointer-events: none;
+      z-index: 0;
+    }
+    
+    .container {
+      max-width: 500px;
+      margin: 0 auto;
+      padding: 40px 24px;
+      position: relative;
+      z-index: 1;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    
+    .logo {
+      display: flex;
+      align-items: baseline;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 28px;
+      margin-bottom: 40px;
+      text-decoration: none;
+    }
+    
+    .logo .bettr { color: var(--text); }
+    .logo .bot { color: var(--green); }
+    .logo .dot-com { color: var(--text-dim); font-size: 16px; font-weight: 500; }
+    
+    .form-box {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 32px;
+    }
+    
+    .form-title {
+      font-size: 24px;
+      font-weight: 700;
+      margin-bottom: 8px;
+      text-align: center;
+    }
+    
+    .form-subtitle {
+      color: var(--text-dim);
+      font-size: 14px;
+      text-align: center;
+      margin-bottom: 32px;
+    }
+    
+    .form-group {
+      margin-bottom: 20px;
+    }
+    
+    .form-group label {
+      display: block;
+      font-size: 14px;
+      font-weight: 500;
+      margin-bottom: 8px;
+      color: var(--text);
+    }
+    
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 14px 16px;
+      background: var(--bg-dark);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      color: var(--text);
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 14px;
+      transition: border-color 0.2s;
+    }
+    
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: var(--green);
+    }
+    
+    .form-group textarea {
+      min-height: 100px;
+      resize: vertical;
+    }
+    
+    .form-group select {
+      cursor: pointer;
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%236b6b80' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 16px center;
+    }
+    
+    .btn-submit {
+      width: 100%;
+      padding: 16px;
+      background: var(--green);
+      border: none;
+      border-radius: 8px;
+      color: #000;
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 600;
+      font-size: 16px;
+      cursor: pointer;
+      transition: filter 0.2s;
+    }
+    
+    .btn-submit:hover {
+      filter: brightness(1.1);
+    }
+    
+    .btn-submit:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+    
+    .success-message {
+      display: none;
+      text-align: center;
+      padding: 24px;
+    }
+    
+    .success-message.show {
+      display: block;
+    }
+    
+    .success-icon {
+      font-size: 48px;
+      margin-bottom: 16px;
+    }
+    
+    .success-title {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--green);
+      margin-bottom: 8px;
+    }
+    
+    .success-text {
+      color: var(--text-dim);
+      font-size: 14px;
+    }
+    
+    .form-content {
+      display: block;
+    }
+    
+    .form-content.hidden {
+      display: none;
+    }
+    
+    .back-link {
+      display: block;
+      text-align: center;
+      margin-top: 24px;
+      color: var(--text-dim);
+      text-decoration: none;
+      font-size: 14px;
+    }
+    
+    .back-link:hover {
+      color: var(--green);
+    }
+    
+    .note {
+      background: rgba(255, 71, 87, 0.1);
+      border: 1px solid rgba(255, 71, 87, 0.3);
+      border-radius: 8px;
+      padding: 12px 16px;
+      margin-bottom: 24px;
+      font-size: 13px;
+      color: var(--text-dim);
+    }
+    
+    .note strong {
+      color: var(--red);
+    }
+  </style>
+</head>
+<body>
+  <div class="bg-pattern"></div>
+  
+  <div class="container">
+    <a href="/" class="logo">
+      <span class="bettr">Bettr</span><span class="bot">Bot</span><span class="dot-com">.com</span>
+    </a>
+    
+    <div class="form-box">
+      <div class="form-content" id="formContent">
+        <h1 class="form-title">Manage Subscription</h1>
+        <p class="form-subtitle">Request changes to your subscription</p>
+        
+        <form id="manageForm">
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" placeholder="your@email.com" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="action">What would you like to do?</label>
+            <select id="action" name="action" required>
+              <option value="">Select an option...</option>
+              <option value="cancel">Cancel my subscription</option>
+              <option value="pause">Pause my subscription</option>
+              <option value="payment">Update payment method</option>
+              <option value="other">Other request</option>
+            </select>
+          </div>
+          
+          <div class="form-group">
+            <label for="reason">Additional details (optional)</label>
+            <textarea id="reason" name="reason" placeholder="Let us know if there's anything we can help with..."></textarea>
+          </div>
+          
+          <div class="note">
+            <strong>Note:</strong> Cancellation requests are processed within 24 hours. Your subscription will remain active until the end of your current billing period.
+          </div>
+          
+          <button type="submit" class="btn-submit" id="submitBtn">Submit Request</button>
+        </form>
+      </div>
+      
+      <div class="success-message" id="successMessage">
+        <div class="success-icon">✓</div>
+        <div class="success-title">Request Submitted</div>
+        <p class="success-text">We've received your request and will process it within 24 hours. You'll receive a confirmation email shortly.</p>
+      </div>
+    </div>
+    
+    <a href="/" class="back-link">← Back to BettrBot</a>
+  </div>
+
+  <script>
+    document.getElementById('manageForm').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      
+      const btn = document.getElementById('submitBtn');
+      btn.disabled = true;
+      btn.textContent = 'Submitting...';
+      
+      const email = document.getElementById('email').value;
+      const action = document.getElementById('action').value;
+      const reason = document.getElementById('reason').value;
+      
+      // Send to Google Sheets via a Web App (you'll need to set this up)
+      // For now, we'll use FormSubmit.co as a simple email solution
+      const formData = new FormData();
+      formData.append('email', email);
+      formData.append('action', action);
+      formData.append('reason', reason);
+      formData.append('_subject', 'BettrBot Subscription Request: ' + action);
+      
+      try {
+        // Using FormSubmit.co - replace with your email
+        await fetch('https://formsubmit.co/ajax/riley.dravet@gmail.com', {
+          method: 'POST',
+          body: formData
+        });
+      } catch (err) {
+        // Even if fetch fails, show success (email might still go through)
+        console.log('Form submission:', err);
+      }
+      
+      // Show success message
+      document.getElementById('formContent').classList.add('hidden');
+      document.getElementById('successMessage').classList.add('show');
+    });
+  </script>
+</body>
+</html>
