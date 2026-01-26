@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Become an Affiliate - BettrBot</title>
+  <meta name="description" content="Join the BettrBot affiliate program and earn 25% commission on every sale. Share your unique link and get paid.">
+  
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    :root {
+      --bg-dark: #0a0a0f;
+      --bg-card: #12121a;
+      --border: #1f1f2e;
+      --text: #e8e8f0;
+      --text-dim: #6b6b80;
+      --green: #00d26a;
+      --green-glow: rgba(0, 210, 106, 0.3);
+      --red: #ff4757;
+      --gold: #ffd700;
+    }
+    
+    body {
+      font-family: 'Space Grotesk', sans-serif;
+      background: var(--bg-dark);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+      min-height: 100vh;
+    }
+    
+    .bg-pattern {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: 
+        radial-gradient(circle at 20% 50%, rgba(0, 210, 106, 0.08) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(0, 210, 106, 0.05) 0%, transparent 40%),
+        radial-gradient(circle at 40% 80%, rgba(255, 71, 87, 0.05) 0%, transparent 40%);
+      pointer-events: none;
+      z-index: 0;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+      position: relative;
+      z-index: 1;
+    }
+    
+    /* Navigation */
+    nav {
+      padding: 24px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 700;
+      font-size: 26px;
+      text-decoration: none;
+    }
+    
+    .logo-text {
+      display: flex;
+      align-items: baseline;
+    }
+    
+    .logo-text .bettr {
+      color: var(--text);
+    }
+    
+    .logo-text .bot {
+      color: var(--green);
+    }
+    
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      align-items: center;
+    }
+    
+    .nav-links a {
+      color: var(--text);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    
+    .nav-links a:hover {
+      color: var(--green);
+    }
+    
+    .nav-links a.active {
+      color: var(--green);
+    }
+    
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 16px 32px;
+      border-radius: 12px;
+      font-size: 16px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.3s;
+      cursor: pointer;
+      border: none;
+    }
+    
+    .btn-primary {
+      background: linear-gradient(135deg, var(--green), #00a854);
+      color: #000;
+      box-shadow: 0 4px 24px var(--green-glow);
+    }
+    
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 32px var(--green-glow);
+    }
+    
+    /* Hero Section */
+    .hero {
+      padding: 80px 0 60px;
+      text-align: center;
+    }
+    
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 24px;
+      background: rgba(0, 210, 106, 0.1);
+      border: 1px solid rgba(0, 210, 106, 0.3);
+      border-radius: 100px;
+      font-size: 16px;
+      font-weight: 500;
+      color: var(--green);
+      margin-bottom: 32px;
+    }
+    
+    h1 {
+      font-size: clamp(40px, 6vw, 56px);
+      font-weight: 700;
+      line-height: 1.1;
+      margin-bottom: 24px;
+      background: linear-gradient(135deg, #fff 0%, #a0a0b0 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .hero-subtitle {
+      font-size: 20px;
+      color: var(--text-dim);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    
+    /* Benefits Section */
+    .benefits {
+      padding: 60px 0;
+    }
+    
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-bottom: 60px;
+    }
+    
+    .benefit-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 32px;
+      text-align: center;
+    }
+    
+    .benefit-icon {
+      font-size: 48px;
+      margin-bottom: 16px;
+    }
+    
+    .benefit-card h3 {
+      font-size: 20px;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+    
+    .benefit-card p {
+      color: var(--text-dim);
+      font-size: 15px;
+    }
+    
+    /* How It Works */
+    .how-it-works {
+      padding: 60px 0;
+    }
+    
+    .section-title {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+    
+    .section-title h2 {
+      font-size: 32px;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+    
+    .section-title p {
+      color: var(--text-dim);
+      font-size: 18px;
+    }
+    
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    
+    .step {
+      text-align: center;
+    }
+    
+    .step-number {
+      width: 56px;
+      height: 56px;
+      background: linear-gradient(135deg, var(--green), #00a854);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      font-weight: 700;
+      color: #000;
+      margin: 0 auto 20px;
+    }
+    
+    .step h3 {
+      font-size: 18px;
+      margin-bottom: 8px;
+    }
+    
+    .step p {
+      color: var(--text-dim);
+      font-size: 14px;
+    }
+    
+    .step a {
+      color: var(--green);
+      text-decoration: none;
+    }
+    
+    .step a:hover {
+      text-decoration: underline;
+    }
+    
+    /* Form Section */
+    .form-section {
+      padding: 60px 0 100px;
+    }
+    
+    .form-container {
+      max-width: 500px;
+      margin: 0 auto;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 40px;
+    }
+    
+    .form-container h2 {
+      font-size: 24px;
+      font-weight: 700;
+      margin-bottom: 8px;
+      text-align: center;
+    }
+    
+    .form-container .subtitle {
+      color: var(--text-dim);
+      font-size: 14px;
+      text-align: center;
+      margin-bottom: 32px;
+    }
+    
+    .form-group {
+      margin-bottom: 20px;
+    }
+    
+    .form-group label {
+      display: block;
+      font-size: 14px;
+      font-weight: 500;
+      margin-bottom: 8px;
+      color: var(--text);
+    }
+    
+    .form-group input {
+      width: 100%;
+      padding: 14px 16px;
+      background: var(--bg-dark);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      color: var(--text);
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 15px;
+      transition: border-color 0.2s;
+    }
+    
+    .form-group input:focus {
+      outline: none;
+      border-color: var(--green);
+    }
+    
+    .form-group input::placeholder {
+      color: var(--text-dim);
+    }
+    
+    .form-group .hint {
+      font-size: 12px;
+      color: var(--text-dim);
+      margin-top: 6px;
+    }
+    
+    .form-group .hint a {
+      color: var(--green);
+      text-decoration: none;
+    }
+    
+    .form-group .hint a:hover {
+      text-decoration: underline;
+    }
+    
+    .submit-btn {
+      width: 100%;
+      padding: 16px;
+      background: linear-gradient(135deg, var(--green), #00a854);
+      color: #000;
+      border: none;
+      border-radius: 10px;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+      margin-top: 12px;
+    }
+    
+    .submit-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 32px var(--green-glow);
+    }
+    
+    /* Footer */
+    footer {
+      padding: 40px 0;
+      border-top: 1px solid var(--border);
+      text-align: center;
+    }
+    
+    .footer-copy {
+      color: var(--text-dim);
+      font-size: 14px;
+    }
+    
+    .footer-copy a {
+      color: var(--text);
+      text-decoration: none;
+    }
+    
+    .footer-copy a:hover {
+      color: var(--green);
+    }
+    
+    /* Success Message */
+    .success-message {
+      display: none;
+      text-align: center;
+      padding: 40px 20px;
+    }
+    
+    .success-message.show {
+      display: block;
+    }
+    
+    .success-icon {
+      font-size: 64px;
+      margin-bottom: 20px;
+    }
+    
+    .success-message h3 {
+      font-size: 24px;
+      margin-bottom: 12px;
+      color: var(--green);
+    }
+    
+    .success-message p {
+      color: var(--text-dim);
+      font-size: 15px;
+    }
+    
+    /* Hide form when success */
+    .form-content.hidden {
+      display: none;
+    }
+    
+    /* Responsive */
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .benefits-grid { grid-template-columns: 1fr; }
+      .steps { grid-template-columns: 1fr; gap: 40px; }
+      .hero { padding: 60px 0 40px; }
+      .form-container { padding: 30px 24px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="bg-pattern"></div>
+  
+  <div class="container">
+    <nav>
+      <a href="/" class="logo">
+        <div class="logo-text">
+          <span class="bettr">Bettr</span><span class="bot">Bot</span>
+        </div>
+      </a>
+      <div class="nav-links">
+        <a href="/#features">Features</a>
+        <a href="/#how-it-works">How It Works</a>
+        <a href="/affiliates.html" class="active">Affiliates</a>
+        <a href="https://whop.com/checkout/plan_te1gYEOZCGhzr" target="_blank" class="btn btn-primary" style="padding: 10px 20px; font-size: 14px;">Get Access</a>
+      </div>
+    </nav>
+    
+    <section class="hero">
+      <div class="badge">💰 Affiliate Program</div>
+      <h1>Earn 25% Commission</h1>
+      <p class="hero-subtitle">Share BettrBot with your audience and earn 25% of every sale. Get your unique link and start earning today.</p>
+    </section>
+    
+    <section class="benefits">
+      <div class="benefits-grid">
+        <div class="benefit-card">
+          <div class="benefit-icon">💵</div>
+          <h3>25% Per Sale</h3>
+          <p>Earn $4.50 for every $18/mo subscription through your link</p>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-icon">🔄</div>
+          <h3>Recurring Revenue</h3>
+          <p>Get paid every month as long as your referrals stay subscribed</p>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-icon">🔗</div>
+          <h3>Custom Link</h3>
+          <p>Get a personalized link with your own creator code</p>
+        </div>
+      </div>
+    </section>
+    
+    <section class="how-it-works">
+      <div class="section-title">
+        <h2>How It Works</h2>
+        <p>Start earning in 3 simple steps</p>
+      </div>
+      
+      <div class="steps">
+        <div class="step">
+          <div class="step-number">1</div>
+          <h3>Create a Whop Account</h3>
+          <p>Sign up for free at <a href="https://whop.com/signup" target="_blank">whop.com</a> (takes 2 minutes)</p>
+        </div>
+        <div class="step">
+          <div class="step-number">2</div>
+          <h3>Submit Your Info</h3>
+          <p>Fill out the form below with your Whop username and desired code</p>
+        </div>
+        <div class="step">
+          <div class="step-number">3</div>
+          <h3>Get Your Link</h3>
+          <p>We'll send you your unique affiliate link within 24 hours</p>
+        </div>
+      </div>
+    </section>
+    
+    <section class="form-section">
+      <div class="form-container">
+        <div class="form-content" id="formContent">
+          <h2>Join the Program</h2>
+          <p class="subtitle">Fill out the form and we'll set up your affiliate link</p>
+          
+          <form id="affiliateForm" action="https://formsubmit.co/riley.dravet@gmail.com" method="POST">
+            <!-- FormSubmit configuration -->
+            <input type="hidden" name="_subject" value="New BettrBot Affiliate Application">
+            <input type="hidden" name="_captcha" value="false">
+            <input type="hidden" name="_template" value="table">
+            <input type="hidden" name="_next" value="https://bettrbot.com/affiliates.html?success=true">
+            
+            <div class="form-group">
+              <label for="email">Email Address</label>
+              <input type="email" id="email" name="email" placeholder="you@example.com" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="whopUsername">Whop Username</label>
+              <input type="text" id="whopUsername" name="whop_username" placeholder="your_username" required>
+              <p class="hint">Don't have one? <a href="https://whop.com/signup" target="_blank">Create a free Whop account</a></p>
+            </div>
+            
+            <div class="form-group">
+              <label for="creatorCode">Desired Creator Code</label>
+              <input type="text" id="creatorCode" name="creator_code" placeholder="MICKEYMILLIONS" required>
+              <p class="hint">This will be your unique code (e.g., bettrbot.com/YOURCODE)</p>
+            </div>
+            
+            <button type="submit" class="submit-btn">Apply Now</button>
+          </form>
+        </div>
+        
+        <div class="success-message" id="successMessage">
+          <div class="success-icon">✅</div>
+          <h3>Application Submitted!</h3>
+          <p>We'll review your application and send your unique affiliate link within 24 hours.</p>
+        </div>
+      </div>
+    </section>
+    
+    <footer>
+      <p class="footer-copy"><a href="/">← Back to BettrBot</a> · © 2026 BettrBot</p>
+    </footer>
+  </div>
+
+  <script>
+    // Check for success parameter
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get('success') === 'true') {
+      document.getElementById('formContent').classList.add('hidden');
+      document.getElementById('successMessage').classList.add('show');
+      // Clean up URL
+      window.history.replaceState({}, document.title, window.location.pathname);
+    }
+  </script>
+</body>
+</html>
