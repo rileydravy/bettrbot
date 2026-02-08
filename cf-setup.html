@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cloudflare Cookie Setup - BettrBot</title>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --bg: #0d1117; --bg-card: #161b22;
+      --border: #30363d; --text: #e6edf3; --text-dim: #7d8590;
+      --green: #3fb950; --green-dim: rgba(63,185,80,0.15);
+      --blue: #58a6ff; --red: #f85149; --yellow: #d29922;
+    }
+    body {
+      font-family: 'Space Grotesk', sans-serif;
+      background: var(--bg); color: var(--text);
+      min-height: 100vh; padding: 40px 24px 80px;
+    }
+    body::before {
+      content: '';
+      position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+      background: 
+        radial-gradient(ellipse at 20% 50%, rgba(63,185,80,0.04) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 20%, rgba(63,185,80,0.03) 0%, transparent 50%);
+      pointer-events: none; z-index: 0;
+    }
+
+    .container {
+      position: relative; z-index: 1;
+      width: 100%; max-width: 680px; margin: 0 auto;
+    }
+
+    .logo {
+      text-align: center; margin-bottom: 12px;
+      font-size: 36px; font-weight: 700;
+    }
+    .logo .bettr { color: var(--text); }
+    .logo .bot { color: var(--green); }
+    .logo .dotcom { color: var(--text-dim); font-size: 20px; font-weight: 500; }
+
+    .page-title {
+      text-align: center; font-size: 16px; color: var(--text-dim);
+      margin-bottom: 40px; font-weight: 500;
+    }
+
+    .step {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 28px;
+      margin-bottom: 20px;
+      animation: fadeUp 0.5s ease-out backwards;
+    }
+    .step:nth-child(2) { animation-delay: 0.05s; }
+    .step:nth-child(3) { animation-delay: 0.1s; }
+    .step:nth-child(4) { animation-delay: 0.15s; }
+    .step:nth-child(5) { animation-delay: 0.2s; }
+    .step:nth-child(6) { animation-delay: 0.25s; }
+    .step:nth-child(7) { animation-delay: 0.3s; }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(12px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .step-header {
+      display: flex; align-items: center; gap: 14px; margin-bottom: 16px;
+    }
+    .step-num {
+      width: 32px; height: 32px; border-radius: 50%;
+      background: var(--green-dim); color: var(--green);
+      font-weight: 700; font-size: 14px;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .step-title {
+      font-size: 17px; font-weight: 600; color: var(--text);
+    }
+
+    .step-body {
+      font-size: 14px; color: var(--text-dim); line-height: 1.7;
+      padding-left: 46px;
+    }
+    .step-body p { margin-bottom: 12px; }
+    .step-body p:last-child { margin-bottom: 0; }
+
+    .key-combo {
+      display: inline-flex; gap: 4px;
+    }
+    kbd {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px; font-weight: 500;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 2px 7px;
+      color: var(--text);
+    }
+
+    code {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      background: rgba(255,255,255,0.08);
+      padding: 2px 7px;
+      border-radius: 4px;
+      color: var(--green);
+    }
+
+    .path-visual {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 16px 20px;
+      margin: 14px 0;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      color: var(--text-dim);
+      display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+    }
+    .path-visual .sep {
+      color: var(--text-dim); opacity: 0.4;
+    }
+    .path-visual .active {
+      color: var(--green); font-weight: 600;
+    }
+    .path-visual .highlight {
+      color: var(--blue); font-weight: 500;
+    }
+
+    .cookie-visual {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 16px 20px;
+      margin: 14px 0;
+      overflow-x: auto;
+    }
+    .cookie-table {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .cookie-table th {
+      text-align: left; color: var(--text-dim); font-weight: 500;
+      padding: 4px 12px 8px 0; border-bottom: 1px solid var(--border);
+      font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px;
+    }
+    .cookie-table td {
+      padding: 8px 12px 8px 0; color: var(--text-dim);
+    }
+    .cookie-table tr.target td {
+      color: var(--text); background: var(--green-dim); border-radius: 4px;
+    }
+    .cookie-table tr.target td:first-child {
+      color: var(--green); font-weight: 600;
+    }
+
+    .warning-box {
+      background: rgba(210,153,34,0.08);
+      border: 1px solid rgba(210,153,34,0.25);
+      border-radius: 8px;
+      padding: 14px 18px;
+      margin: 14px 0;
+      font-size: 13px;
+      color: var(--yellow);
+      display: flex; align-items: flex-start; gap: 10px;
+    }
+    .warning-box .icon { font-size: 16px; flex-shrink: 0; margin-top: 1px; }
+
+    .tip-box {
+      background: rgba(63,185,80,0.06);
+      border: 1px solid rgba(63,185,80,0.2);
+      border-radius: 8px;
+      padding: 14px 18px;
+      margin: 14px 0;
+      font-size: 13px;
+      color: var(--green);
+      display: flex; align-items: flex-start; gap: 10px;
+    }
+    .tip-box .icon { font-size: 16px; flex-shrink: 0; margin-top: 1px; }
+
+    .highlight-text { color: var(--text); font-weight: 600; }
+
+    a { color: var(--blue); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="logo">
+      <span class="bettr">Bettr</span><span class="bot">Bot</span><span class="dotcom">.com</span>
+    </div>
+    <div class="page-title">Cloudflare Cookie Setup Guide</div>
+
+    <!-- Video Tutorial -->
+    <div class="step" style="animation-delay: 0s;">
+      <div class="step-header">
+        <div class="step-num">▶</div>
+        <div class="step-title">Video Tutorial</div>
+      </div>
+      <div class="step-body">
+        <p>Watch the 20-second walkthrough, or follow the written steps below.</p>
+        <div style="margin-top: 14px; border-radius: 10px; overflow: hidden; border: 1px solid var(--border); background: #000;">
+          <video controls playsinline preload="metadata" style="width: 100%; display: block; border-radius: 10px;"
+            poster="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='680' height='383' fill='%230d1117'%3E%3Crect width='680' height='383'/%3E%3Ctext x='50%25' y='50%25' fill='%237d8590' font-family='sans-serif' font-size='16' text-anchor='middle' dy='.3em'%3EClick to play%3C/text%3E%3C/svg%3E">
+            <source src="https://bettrbot.com/cf-setup-tutorial.mp4" type="video/mp4">
+            Your browser does not support video playback.
+          </video>
+        </div>
+      </div>
+    </div>
+
+    <!-- Step 1 -->
+    <div class="step">
+      <div class="step-header">
+        <div class="step-num">1</div>
+        <div class="step-title">Open Stake.us in Chrome</div>
+      </div>
+      <div class="step-body">
+        <p>Open <a href="https://stake.us" target="_blank">stake.us</a> in <span class="highlight-text">Google Chrome</span> (not Edge, not the BettrBot app) and make sure you're logged in to your account.</p>
+      </div>
+    </div>
+
+    <!-- Step 2 -->
+    <div class="step">
+      <div class="step-header">
+        <div class="step-num">2</div>
+        <div class="step-title">Open Developer Tools</div>
+      </div>
+      <div class="step-body">
+        <p>Press <span class="key-combo"><kbd>F12</kbd></span> on your keyboard to open Chrome DevTools. You can also right-click anywhere on the page and select <span class="highlight-text">Inspect</span>.</p>
+        <p>A panel will open on the right or bottom of your browser.</p>
+      </div>
+    </div>
+
+    <!-- Step 3 -->
+    <div class="step">
+      <div class="step-header">
+        <div class="step-num">3</div>
+        <div class="step-title">Go to Application → Cookies</div>
+      </div>
+      <div class="step-body">
+        <p>In the DevTools panel, click the <span class="highlight-text">Application</span> tab at the top. If you don't see it, click the <span class="highlight-text">»</span> arrows to find it.</p>
+        <p>Then in the left sidebar, expand <span class="highlight-text">Cookies</span> and click on <span class="highlight-text">https://stake.us</span>.</p>
+        <div class="path-visual">
+          <span>Application</span>
+          <span class="sep">›</span>
+          <span>Storage</span>
+          <span class="sep">›</span>
+          <span class="active">Cookies</span>
+          <span class="sep">›</span>
+          <span class="highlight">https://stake.us</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Step 4 -->
+    <div class="step">
+      <div class="step-header">
+        <div class="step-num">4</div>
+        <div class="step-title">Find the cf_clearance cookie</div>
+      </div>
+      <div class="step-body">
+        <p>You'll see a list of cookies. Use the <span class="highlight-text">Filter</span> box at the top and type <code>cf_clearance</code> to find it quickly.</p>
+
+        <div class="cookie-visual">
+          <table class="cookie-table">
+            <tr><th>Name</th><th>Value</th><th>Domain</th></tr>
+            <tr><td>__cf_bm</td><td>yQqfWbBe_9QRP35M3d...</td><td>.stake.us</td></tr>
+            <tr class="target"><td>cf_clearance</td><td>iBUEuJPPk.NK.geQWBT1t...</td><td>.stake.us</td></tr>
+            <tr><td>_cfuvid</td><td>VoVVBJmCA1BQrGhZrN...</td><td>.stake.us</td></tr>
+          </table>
+        </div>
+
+        <div class="warning-box">
+          <span class="icon">⚠️</span>
+          <span>If you don't see <code>cf_clearance</code> in the list, your account may not have one. Try refreshing stake.us a few times, or try a different account. Not all sessions generate this cookie.</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Step 5 -->
+    <div class="step">
+      <div class="step-header">
+        <div class="step-num">5</div>
+        <div class="step-title">Copy the cookie value</div>
+      </div>
+      <div class="step-body">
+        <p>Click on the <code>cf_clearance</code> row. At the bottom of the DevTools panel you'll see <span class="highlight-text">Cookie Value</span> with the full value displayed.</p>
+        <p><span class="highlight-text">Double-click</span> the value text to select it, then <span class="key-combo"><kbd>Ctrl</kbd> + <kbd>C</kbd></span> to copy.</p>
+        <div class="tip-box">
+          <span class="icon">💡</span>
+          <span>Make sure you copy the <span class="highlight-text">entire</span> value — it's a long string. Don't accidentally miss any characters.</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Step 6 -->
+    <div class="step">
+      <div class="step-header">
+        <div class="step-num">6</div>
+        <div class="step-title">Paste into BettrBot</div>
+      </div>
+      <div class="step-body">
+        <p>Back in BettrBot, paste the value into the <span class="highlight-text">Cloudflare Clearance Cookie Value</span> field.</p>
+        <p>If you haven't already, also get your User Agent from <a href="https://bettrbot.com/user-agent" target="_blank">bettrbot.com/user-agent</a> and paste it into the <span class="highlight-text">User Agent</span> field.</p>
+        <p>Click <span class="highlight-text">Save values</span>, then click <span class="highlight-text">Continue</span> and <span class="highlight-text">Connect</span>.</p>
+      </div>
+    </div>
+
+    <!-- Done -->
+    <div class="step">
+      <div class="step-header">
+        <div class="step-num">✓</div>
+        <div class="step-title">You're all set!</div>
+      </div>
+      <div class="step-body">
+        <p>BettrBot will use your browser's session to connect to Stake.us without any Cloudflare popups. The session stays active as long as the bot is running.</p>
+        <div class="tip-box">
+          <span class="icon">💡</span>
+          <span>Your saved values persist across app restarts. You only need to redo this if you clear your Chrome cookies or if you see 403 errors again.</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>
