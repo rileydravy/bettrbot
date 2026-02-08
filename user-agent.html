@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your User Agent - BettrBot</title>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --bg: #0d1117; --bg-card: #161b22;
+      --border: #30363d; --text: #e6edf3; --text-dim: #7d8590;
+      --green: #3fb950; --green-dim: rgba(63,185,80,0.15);
+    }
+    body {
+      font-family: 'Space Grotesk', sans-serif;
+      background: var(--bg); color: var(--text);
+      min-height: 100vh; display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      padding: 24px;
+    }
+    body::before {
+      content: '';
+      position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+      background: 
+        radial-gradient(ellipse at 20% 50%, rgba(63,185,80,0.04) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 20%, rgba(63,185,80,0.03) 0%, transparent 50%);
+      pointer-events: none; z-index: 0;
+    }
+
+    .container {
+      position: relative; z-index: 1;
+      width: 100%; max-width: 620px;
+    }
+
+    .logo {
+      text-align: center; margin-bottom: 48px;
+      font-size: 36px; font-weight: 700;
+    }
+    .logo .bettr { color: var(--text); }
+    .logo .bot { color: var(--green); }
+    .logo .dotcom { color: var(--text-dim); font-size: 20px; font-weight: 500; }
+
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 32px;
+      animation: fadeUp 0.5s ease-out;
+    }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(12px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .card-title {
+      font-size: 18px; font-weight: 600;
+      margin-bottom: 16px; color: var(--text);
+    }
+
+    .ua-display {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 18px 20px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      line-height: 1.7;
+      color: var(--text-dim);
+      word-break: break-all;
+      margin-bottom: 20px;
+      min-height: 60px;
+      transition: border-color 0.3s;
+    }
+
+    .btn-copy {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 10px 22px;
+      background: transparent;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      color: var(--text);
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 14px; font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .btn-copy:hover {
+      border-color: var(--green);
+      background: var(--green-dim);
+      color: var(--green);
+    }
+    .btn-copy.copied {
+      border-color: var(--green);
+      background: var(--green-dim);
+      color: var(--green);
+    }
+    .btn-copy svg { width: 16px; height: 16px; }
+
+    .hint {
+      margin-top: 28px;
+      padding-top: 20px;
+      border-top: 1px solid var(--border);
+      font-size: 12px;
+      color: var(--text-dim);
+      line-height: 1.7;
+    }
+    .hint strong { color: var(--text); font-weight: 600; }
+    .hint ol { margin-top: 8px; padding-left: 20px; }
+    .hint li { margin-bottom: 4px; }
+    .hint code {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      background: rgba(255,255,255,0.06);
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="logo">
+      <span class="bettr">Bettr</span><span class="bot">Bot</span><span class="dotcom">.com</span>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Your User Agent</div>
+      <div class="ua-display" id="uaDisplay"></div>
+      <button class="btn-copy" id="btnCopy" onclick="copyUA()">
+        <svg id="iconCopy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/>
+        </svg>
+        <svg id="iconCheck" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none;">
+          <polyline points="20 6 9 17 4 12"/>
+        </svg>
+        <span id="copyText">Copy</span>
+      </button>
+
+      <div class="hint">
+        <strong>How to use this:</strong>
+        <ol>
+          <li>Click <strong>Copy</strong> to copy your User Agent</li>
+          <li>Paste it in the <strong>User Agent</strong> field in BettrBot</li>
+          <li>Then get your <code>cf_clearance</code> cookie from DevTools (F12 → Application → Cookies → stake.us)</li>
+          <li>Paste both values and click <strong>Save values</strong></li>
+        </ol>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('uaDisplay').textContent = navigator.userAgent;
+
+    function copyUA() {
+      navigator.clipboard.writeText(navigator.userAgent).then(() => {
+        const btn = document.getElementById('btnCopy');
+        const text = document.getElementById('copyText');
+        const iconCopy = document.getElementById('iconCopy');
+        const iconCheck = document.getElementById('iconCheck');
+        
+        btn.classList.add('copied');
+        text.textContent = 'Copied!';
+        iconCopy.style.display = 'none';
+        iconCheck.style.display = 'block';
+
+        setTimeout(() => {
+          btn.classList.remove('copied');
+          text.textContent = 'Copy';
+          iconCopy.style.display = 'block';
+          iconCheck.style.display = 'none';
+        }, 2000);
+      });
+    }
+  </script>
+</body>
+</html>
