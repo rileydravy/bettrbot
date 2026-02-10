@@ -232,9 +232,9 @@
     
     .steps {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 32px;
-      max-width: 900px;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      max-width: 1000px;
       margin: 0 auto;
     }
     
@@ -273,6 +273,26 @@
     
     .step a:hover {
       text-decoration: underline;
+    }
+
+    /* Info Box */
+    .info-box {
+      max-width: 700px;
+      margin: 40px auto 0;
+      background: rgba(0, 210, 106, 0.05);
+      border: 1px solid rgba(0, 210, 106, 0.2);
+      border-radius: 12px;
+      padding: 24px 28px;
+      text-align: center;
+    }
+
+    .info-box p {
+      color: var(--text-dim);
+      font-size: 15px;
+    }
+
+    .info-box strong {
+      color: var(--text);
     }
     
     /* Form Section */
@@ -455,15 +475,15 @@
     <section class="hero">
       <div class="badge">💰 Affiliate Program</div>
       <h1>Earn 20% Commission</h1>
-      <p class="hero-subtitle">Share BettrBot with your audience and earn 20% of every sale. Get your unique link and start earning today.</p>
+      <p class="hero-subtitle">Share BettrBot with your audience and earn 20% on every payment your referrals make. As long as they stay subscribed, you get paid every month.</p>
     </section>
     
     <section class="benefits">
       <div class="benefits-grid">
         <div class="benefit-card">
           <div class="benefit-icon">💵</div>
-          <h3>20% Per Sale</h3>
-          <p>Earn $5.00 for every $25/mo subscription through your link</p>
+          <h3>20% Per Payment</h3>
+          <p>Earn $5.00 for every $25/mo subscription payment made through your link</p>
         </div>
         <div class="benefit-card">
           <div class="benefit-icon">🔄</div>
@@ -471,35 +491,39 @@
           <p>Get paid every month as long as your referrals stay subscribed</p>
         </div>
         <div class="benefit-card">
-          <div class="benefit-icon">🔗</div>
-          <h3>Custom Link</h3>
-          <p>Get a personalized link with your own creator code</p>
+          <div class="benefit-icon">⚡</div>
+          <h3>Automatic Payouts</h3>
+          <p>Whop handles all tracking and payments — no extra work for you</p>
         </div>
       </div>
     </section>
     
     <section class="how-it-works">
       <div class="section-title">
-        <h2>How It Works</h2>
-        <p>Start earning in 3 simple steps</p>
+        <h2>How to Get Your Affiliate Link</h2>
+        <p>Once you're approved, follow these steps to start earning</p>
       </div>
       
-      <div class="steps">
+      <div class="steps" style="grid-template-columns: repeat(3, 1fr);">
         <div class="step">
           <div class="step-number">1</div>
-          <h3>Create a Whop Account</h3>
-          <p>Sign up for free at <a href="https://whop.com/signup" target="_blank">whop.com</a> (takes 2 minutes)</p>
+          <h3>Apply Below</h3>
+          <p>Submit the form with your Whop username and we'll add you as an affiliate within 24 hours</p>
         </div>
         <div class="step">
           <div class="step-number">2</div>
-          <h3>Submit Your Info</h3>
-          <p>Fill out the form below with your Whop username and desired code</p>
+          <h3>Find Your Link</h3>
+          <p>Visit <a href="https://whop.com/affiliates/buyers/" target="_blank">whop.com/affiliates/buyers</a>, find "BettrBot Subscription" and click "View Assets"</p>
         </div>
         <div class="step">
           <div class="step-number">3</div>
-          <h3>Get Your Link</h3>
-          <p>We'll send you your unique affiliate link within 24 hours</p>
+          <h3>Copy & Share</h3>
+          <p>Copy your unique affiliate link and share it with anyone</p>
         </div>
+      </div>
+
+      <div class="info-box">
+        <p><strong>Note:</strong> BettrBot has a 7-day free trial. You won't earn commission until your referral is charged after the trial ends. As long as they stay subscribed, you get paid on every monthly payment.</p>
       </div>
     </section>
     
@@ -507,7 +531,7 @@
       <div class="form-container">
         <div class="form-content" id="formContent">
           <h2>Join the Program</h2>
-          <p class="subtitle">Fill out the form and we'll set up your affiliate link</p>
+          <p class="subtitle">Fill out the form and we'll set up your affiliate account</p>
           
           <form id="affiliateForm" action="https://formsubmit.co/riley.dravet@gmail.com" method="POST">
             <!-- FormSubmit configuration -->
@@ -527,12 +551,6 @@
               <p class="hint">Don't have one? <a href="https://whop.com/signup" target="_blank">Create a free Whop account</a></p>
             </div>
             
-            <div class="form-group">
-              <label for="creatorCode">Desired Creator Code</label>
-              <input type="text" id="creatorCode" name="creator_code" placeholder="BEARDOWN" required>
-              <p class="hint">This will be part of your unique checkout link</p>
-            </div>
-            
             <button type="submit" class="submit-btn">Apply Now</button>
           </form>
         </div>
@@ -540,7 +558,7 @@
         <div class="success-message" id="successMessage">
           <div class="success-icon">✅</div>
           <h3>Application Submitted!</h3>
-          <p>We'll review your application and send your unique affiliate link within 24 hours.</p>
+          <p>We'll review your application and add you as an affiliate within 24 hours. Once approved, follow the steps above to grab your unique link and start earning.</p>
         </div>
       </div>
     </section>
