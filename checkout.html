@@ -33,10 +33,10 @@
       font-family: 'Space Grotesk', sans-serif;
       background: var(--bg-dark);
       color: var(--text);
-      line-height: 1.6;
+      line-height: 1.5;
       min-height: 100vh;
     }
-    
+
     .bg-pattern {
       position: fixed;
       top: 0;
@@ -50,120 +50,222 @@
       pointer-events: none;
       z-index: 0;
     }
-    
-    .container {
-      max-width: 800px;
-      margin: 0 auto;
-      padding: 0 24px;
+
+    .page-content {
       position: relative;
       z-index: 1;
     }
-    
+
+    /* Nav */
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
     nav {
       padding: 24px 0;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      border-bottom: 1px solid var(--border);
     }
     
     .logo {
       display: flex;
       align-items: center;
-      gap: 12px;
       font-weight: 700;
       font-size: 26px;
       text-decoration: none;
     }
     
-    .logo-text .bettr { color: var(--text); }
-    .logo-text .bot { color: var(--green); }
-    
-    .back-link {
+    .logo .bettr { color: var(--text); }
+    .logo .bot { color: var(--green); }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      align-items: center;
+    }
+
+    .nav-links a {
       color: var(--text-dim);
       text-decoration: none;
       font-size: 14px;
       font-weight: 500;
       transition: color 0.2s;
     }
-    
-    .back-link:hover { color: var(--green); }
-    
-    .checkout-section {
-      padding: 60px 0 100px;
-      text-align: center;
+
+    .nav-links a:hover { color: var(--green); }
+
+    /* Checkout area */
+    .checkout-area {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 48px 24px 40px;
+      display: grid;
+      grid-template-columns: 1fr 1.3fr;
+      gap: 60px;
+      align-items: start;
     }
-    
-    .checkout-section h1 {
-      font-size: 32px;
-      font-weight: 700;
-      margin-bottom: 12px;
-      background: linear-gradient(135deg, #fff 0%, #a0a0b0 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
+
+    /* Left side - Product info */
+    .product-info {
+      padding: 20px 0;
     }
-    
-    .checkout-section .subtitle {
-      color: var(--text-dim);
-      font-size: 16px;
-      margin-bottom: 40px;
-    }
-    
-    .checkout-container {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      padding: 40px;
-      min-height: 400px;
+
+    .brand {
       display: flex;
       align-items: center;
-      justify-content: center;
-    }
-    
-    .checkout-container .loading {
-      color: var(--text-dim);
-      font-size: 16px;
-    }
-
-    .error-message {
-      text-align: center;
-      padding: 60px 20px;
-    }
-
-    .error-message h2 {
-      font-size: 24px;
-      margin-bottom: 12px;
-      color: var(--text);
-    }
-
-    .error-message p {
-      color: var(--text-dim);
-      font-size: 16px;
+      gap: 10px;
       margin-bottom: 24px;
     }
 
-    .error-message a {
-      display: inline-flex;
+    .brand-icon {
+      width: 40px;
+      height: 40px;
+      background: var(--green);
+      border-radius: 10px;
+      display: flex;
       align-items: center;
-      gap: 10px;
-      padding: 14px 28px;
-      border-radius: 12px;
-      font-size: 16px;
-      font-weight: 600;
-      text-decoration: none;
-      background: linear-gradient(135deg, var(--green), #00a854);
+      justify-content: center;
+      font-weight: 700;
+      font-size: 18px;
       color: #000;
-      box-shadow: 0 4px 24px var(--green-glow);
-      transition: all 0.3s;
     }
 
-    .error-message a:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 32px var(--green-glow);
+    .brand-name {
+      font-size: 17px;
+      font-weight: 600;
+      color: var(--text);
     }
-    
+
+    .subscribe-label {
+      font-size: 15px;
+      color: var(--text-dim);
+      margin-bottom: 8px;
+    }
+
+    .free-trial {
+      font-size: 48px;
+      font-weight: 700;
+      color: var(--text);
+      letter-spacing: -1px;
+      margin-bottom: 8px;
+    }
+
+    .then-price {
+      font-size: 15px;
+      color: var(--text-dim);
+      margin-bottom: 32px;
+    }
+
+    .divider {
+      height: 1px;
+      background: var(--border);
+      margin: 24px 0;
+    }
+
+    .description-label {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+
+    .description-text {
+      font-size: 14px;
+      color: var(--text-dim);
+      line-height: 1.6;
+    }
+
+    .totals {
+      padding-top: 0;
+    }
+
+    .total-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 4px 0;
+    }
+
+    .total-row .label {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .total-row .value {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .total-row.after .label,
+    .total-row.after .value {
+      font-weight: 400;
+      color: var(--text-dim);
+      font-size: 14px;
+    }
+
+    /* Features list */
+    .features {
+      margin-top: 32px;
+    }
+
+    .feature {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 8px 0;
+    }
+
+    .feature-check {
+      width: 22px;
+      height: 22px;
+      background: rgba(0, 210, 106, 0.15);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .feature-check svg {
+      width: 12px;
+      height: 12px;
+      stroke: var(--green);
+      fill: none;
+      stroke-width: 3;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .feature span {
+      font-size: 14px;
+      color: var(--text-dim);
+    }
+
+    /* Right side - Checkout form, no card wrapper */
+    #checkoutContainer {
+      padding: 20px 0;
+    }
+
+    #checkoutContainer iframe {
+      width: 100% !important;
+      min-height: 900px !important;
+    }
+
+    /* Footer */
+    .footer-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
     footer {
-      padding: 40px 0;
+      padding: 32px 0;
       border-top: 1px solid var(--border);
       text-align: center;
     }
@@ -181,55 +283,118 @@
     .footer-copy a:hover { color: var(--green); }
 
     @media (max-width: 768px) {
-      .checkout-container { padding: 24px 16px; }
+      .checkout-area {
+        grid-template-columns: 1fr;
+        gap: 24px;
+        padding: 32px 20px 40px;
+      }
+
+      .product-info { padding: 0; }
+
+      .free-trial { font-size: 36px; }
+
+      #checkoutContainer { padding: 0; }
+
+      .nav-links { display: none; }
     }
   </style>
 </head>
 <body>
   <div class="bg-pattern"></div>
-  
-  <div class="container">
-    <nav>
-      <a href="/" class="logo">
-        <div class="logo-text">
+
+  <div class="page-content">
+    <!-- Nav -->
+    <div class="nav-container">
+      <nav>
+        <a href="/" class="logo">
           <span class="bettr">Bettr</span><span class="bot">Bot</span>
+        </a>
+        <div class="nav-links">
+          <a href="/#features">Features</a>
+          <a href="/#how-it-works">How It Works</a>
+          <a href="/affiliates.html">Affiliates</a>
         </div>
-      </a>
-      <a href="/" class="back-link">← Back to Home</a>
-    </nav>
-    
-    <section class="checkout-section">
-      <h1>Get Access to BettrBot</h1>
-      <p class="subtitle">$25/month · 7-day free trial · Cancel anytime</p>
-      
-      <div class="checkout-container" id="checkoutContainer">
-        <p class="loading">Loading checkout...</p>
+      </nav>
+    </div>
+
+    <!-- Checkout -->
+    <div class="checkout-area">
+      <!-- Left: Product info -->
+      <div class="product-info">
+        <div class="brand">
+          <div class="brand-icon">B</div>
+          <span class="brand-name">Bettr Bot</span>
+        </div>
+
+        <p class="subscribe-label">Subscribe to Blackjack Bot</p>
+        <h1 class="free-trial">7 days free</h1>
+        <p class="then-price">Then $25.00 starting 7 days from today</p>
+
+        <div class="divider"></div>
+
+        <p class="description-label">Description</p>
+        <p class="description-text">Automate blackjack with perfect basic strategy.<br>Compatible with Stake.us &amp; Shuffle.us</p>
+
+        <div class="divider"></div>
+
+        <div class="totals">
+          <div class="total-row">
+            <span class="label">Total due today</span>
+            <span class="value">$0.00</span>
+          </div>
+          <div class="total-row after">
+            <span class="label">Total after trial</span>
+            <span class="value">$25.00 per month</span>
+          </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="features">
+          <div class="feature">
+            <div class="feature-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+            <span>7-day free trial — cancel anytime</span>
+          </div>
+          <div class="feature">
+            <div class="feature-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+            <span>Perfect basic strategy automation</span>
+          </div>
+          <div class="feature">
+            <div class="feature-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+            <span>Works with Stake.us &amp; Shuffle.us</span>
+          </div>
+          <div class="feature">
+            <div class="feature-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+            <span>Instant access after signup</span>
+          </div>
+        </div>
       </div>
-    </section>
-    
-    <footer>
-      <p class="footer-copy"><a href="/">← Back to BettrBot</a> · © 2026 BettrBot</p>
-    </footer>
+
+      <!-- Right: Checkout form -->
+      <div id="checkoutContainer"></div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer-container">
+      <footer>
+        <p class="footer-copy"><a href="/">← Back to BettrBot</a> · © 2026 BettrBot</p>
+      </footer>
+    </div>
   </div>
 
   <script>
-    // Get the affiliate username from the URL parameter "ref"
     const urlParams = new URLSearchParams(window.location.search);
     const affiliateCode = urlParams.get('ref');
     
     const container = document.getElementById('checkoutContainer');
     
-    // Build the Whop checkout embed div
     const checkoutDiv = document.createElement('div');
     checkoutDiv.setAttribute('data-whop-checkout-plan-id', 'plan_JUCAqcAqjWqeZ');
     
-    // Only add the affiliate code if one was provided in the URL
     if (affiliateCode) {
       checkoutDiv.setAttribute('data-whop-checkout-affiliate-code', affiliateCode);
     }
     
-    // Clear loading text and insert the checkout embed
-    container.innerHTML = '';
     container.appendChild(checkoutDiv);
   </script>
 </body>
