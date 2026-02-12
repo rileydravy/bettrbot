@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkout - BettrBot</title>
+  <meta name="description" content="Get access to BettrBot - the smartest blackjack bot. Start your 7-day free trial.">
+  
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Whop Checkout Embed Script -->
+  <script async defer src="https://js.whop.com/static/checkout/loader.js"></script>
+  
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    :root {
+      --bg-dark: #0a0a0f;
+      --bg-card: #12121a;
+      --border: #1f1f2e;
+      --text: #e8e8f0;
+      --text-dim: #6b6b80;
+      --green: #00d26a;
+      --green-glow: rgba(0, 210, 106, 0.3);
+    }
+    
+    body {
+      font-family: 'Space Grotesk', sans-serif;
+      background: var(--bg-dark);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+    
+    .bg-pattern {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: 
+        radial-gradient(circle at 20% 50%, rgba(0, 210, 106, 0.08) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(0, 210, 106, 0.05) 0%, transparent 40%),
+        radial-gradient(circle at 40% 80%, rgba(255, 71, 87, 0.05) 0%, transparent 40%);
+      pointer-events: none;
+      z-index: 0;
+    }
+    
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 24px;
+      position: relative;
+      z-index: 1;
+    }
+    
+    nav {
+      padding: 24px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 700;
+      font-size: 26px;
+      text-decoration: none;
+    }
+    
+    .logo-text .bettr { color: var(--text); }
+    .logo-text .bot { color: var(--green); }
+    
+    .back-link {
+      color: var(--text-dim);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    
+    .back-link:hover { color: var(--green); }
+    
+    .checkout-section {
+      padding: 60px 0 100px;
+      text-align: center;
+    }
+    
+    .checkout-section h1 {
+      font-size: 32px;
+      font-weight: 700;
+      margin-bottom: 12px;
+      background: linear-gradient(135deg, #fff 0%, #a0a0b0 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .checkout-section .subtitle {
+      color: var(--text-dim);
+      font-size: 16px;
+      margin-bottom: 40px;
+    }
+    
+    .checkout-container {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 40px;
+      min-height: 400px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .checkout-container .loading {
+      color: var(--text-dim);
+      font-size: 16px;
+    }
+
+    .error-message {
+      text-align: center;
+      padding: 60px 20px;
+    }
+
+    .error-message h2 {
+      font-size: 24px;
+      margin-bottom: 12px;
+      color: var(--text);
+    }
+
+    .error-message p {
+      color: var(--text-dim);
+      font-size: 16px;
+      margin-bottom: 24px;
+    }
+
+    .error-message a {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 28px;
+      border-radius: 12px;
+      font-size: 16px;
+      font-weight: 600;
+      text-decoration: none;
+      background: linear-gradient(135deg, var(--green), #00a854);
+      color: #000;
+      box-shadow: 0 4px 24px var(--green-glow);
+      transition: all 0.3s;
+    }
+
+    .error-message a:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 32px var(--green-glow);
+    }
+    
+    footer {
+      padding: 40px 0;
+      border-top: 1px solid var(--border);
+      text-align: center;
+    }
+    
+    .footer-copy {
+      color: var(--text-dim);
+      font-size: 14px;
+    }
+    
+    .footer-copy a {
+      color: var(--text);
+      text-decoration: none;
+    }
+    
+    .footer-copy a:hover { color: var(--green); }
+
+    @media (max-width: 768px) {
+      .checkout-container { padding: 24px 16px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="bg-pattern"></div>
+  
+  <div class="container">
+    <nav>
+      <a href="/" class="logo">
+        <div class="logo-text">
+          <span class="bettr">Bettr</span><span class="bot">Bot</span>
+        </div>
+      </a>
+      <a href="/" class="back-link">← Back to Home</a>
+    </nav>
+    
+    <section class="checkout-section">
+      <h1>Get Access to BettrBot</h1>
+      <p class="subtitle">$25/month · 7-day free trial · Cancel anytime</p>
+      
+      <div class="checkout-container" id="checkoutContainer">
+        <p class="loading">Loading checkout...</p>
+      </div>
+    </section>
+    
+    <footer>
+      <p class="footer-copy"><a href="/">← Back to BettrBot</a> · © 2026 BettrBot</p>
+    </footer>
+  </div>
+
+  <script>
+    // Get the affiliate username from the URL parameter "ref"
+    const urlParams = new URLSearchParams(window.location.search);
+    const affiliateCode = urlParams.get('ref');
+    
+    const container = document.getElementById('checkoutContainer');
+    
+    // Build the Whop checkout embed div
+    const checkoutDiv = document.createElement('div');
+    checkoutDiv.setAttribute('data-whop-checkout-plan-id', 'plan_JUCAqcAqjWqeZ');
+    
+    // Only add the affiliate code if one was provided in the URL
+    if (affiliateCode) {
+      checkoutDiv.setAttribute('data-whop-checkout-affiliate-code', affiliateCode);
+    }
+    
+    // Clear loading text and insert the checkout embed
+    container.innerHTML = '';
+    container.appendChild(checkoutDiv);
+  </script>
+</body>
+</html>
