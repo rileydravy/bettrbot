@@ -232,9 +232,9 @@
     
     .steps {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 24px;
-      max-width: 1000px;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 20px;
+      max-width: 1100px;
       margin: 0 auto;
     }
     
@@ -294,101 +294,77 @@
     .info-box strong {
       color: var(--text);
     }
-    
-    /* Form Section */
-    .form-section {
-      padding: 60px 0 100px;
+
+    /* Video Section */
+    .video-section {
+      padding: 60px 0;
     }
-    
-    .form-container {
-      max-width: 500px;
+
+    .video-container {
+      max-width: 800px;
       margin: 0 auto;
       background: var(--bg-card);
       border: 1px solid var(--border);
       border-radius: 20px;
-      padding: 40px;
+      overflow: hidden;
     }
-    
-    .form-container h2 {
-      font-size: 24px;
-      font-weight: 700;
-      margin-bottom: 8px;
-      text-align: center;
+
+    .video-wrapper {
+      position: relative;
+      padding-bottom: 56.25%; /* 16:9 aspect ratio */
+      height: 0;
+      background: #0d0d14;
     }
-    
-    .form-container .subtitle {
-      color: var(--text-dim);
-      font-size: 14px;
-      text-align: center;
-      margin-bottom: 32px;
-    }
-    
-    .form-group {
-      margin-bottom: 20px;
-    }
-    
-    .form-group label {
-      display: block;
-      font-size: 14px;
-      font-weight: 500;
-      margin-bottom: 8px;
-      color: var(--text);
-    }
-    
-    .form-group input {
+
+    .video-wrapper iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
       width: 100%;
-      padding: 14px 16px;
-      background: var(--bg-dark);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      color: var(--text);
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 15px;
-      transition: border-color 0.2s;
-    }
-    
-    .form-group input:focus {
-      outline: none;
-      border-color: var(--green);
-    }
-    
-    .form-group input::placeholder {
-      color: var(--text-dim);
-    }
-    
-    .form-group .hint {
-      font-size: 12px;
-      color: var(--text-dim);
-      margin-top: 6px;
-    }
-    
-    .form-group .hint a {
-      color: var(--green);
-      text-decoration: none;
-    }
-    
-    .form-group .hint a:hover {
-      text-decoration: underline;
-    }
-    
-    .submit-btn {
-      width: 100%;
-      padding: 16px;
-      background: linear-gradient(135deg, var(--green), #00a854);
-      color: #000;
+      height: 100%;
       border: none;
-      border-radius: 10px;
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 16px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.3s;
-      margin-top: 12px;
     }
-    
-    .submit-btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 32px var(--green-glow);
+
+    .video-placeholder {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      color: var(--text-dim);
+    }
+
+    .video-placeholder .play-icon {
+      width: 72px;
+      height: 72px;
+      background: rgba(0, 210, 106, 0.15);
+      border: 2px solid rgba(0, 210, 106, 0.4);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+    }
+
+    .video-placeholder p {
+      font-size: 15px;
+    }
+
+    /* CTA Section */
+    .cta-section {
+      padding: 40px 0 100px;
+      text-align: center;
+    }
+
+    .cta-section p {
+      color: var(--text-dim);
+      font-size: 16px;
+      margin-bottom: 24px;
     }
     
     /* Footer */
@@ -412,45 +388,12 @@
       color: var(--green);
     }
     
-    /* Success Message */
-    .success-message {
-      display: none;
-      text-align: center;
-      padding: 40px 20px;
-    }
-    
-    .success-message.show {
-      display: block;
-    }
-    
-    .success-icon {
-      font-size: 64px;
-      margin-bottom: 20px;
-    }
-    
-    .success-message h3 {
-      font-size: 24px;
-      margin-bottom: 12px;
-      color: var(--green);
-    }
-    
-    .success-message p {
-      color: var(--text-dim);
-      font-size: 15px;
-    }
-    
-    /* Hide form when success */
-    .form-content.hidden {
-      display: none;
-    }
-    
     /* Responsive */
     @media (max-width: 768px) {
       .nav-links { display: none; }
       .benefits-grid { grid-template-columns: 1fr; }
       .steps { grid-template-columns: 1fr; gap: 40px; }
       .hero { padding: 60px 0 40px; }
-      .form-container { padding: 30px 24px; }
     }
   </style>
 </head>
@@ -473,7 +416,6 @@
     </nav>
     
     <section class="hero">
-      <div class="badge">💰 Affiliate Program</div>
       <h1>Earn 20% Commission</h1>
       <p class="hero-subtitle">Share BettrBot with your audience and earn 20% on every payment your referrals make. As long as they stay subscribed, you get paid every month.</p>
     </section>
@@ -500,83 +442,59 @@
     
     <section class="how-it-works">
       <div class="section-title">
-        <h2>How to Get Your Affiliate Link</h2>
-        <p>Once you're approved, follow these steps to start earning</p>
+        <h2>How to Become an Affiliate</h2>
+        <p>Get set up in minutes — no approval needed</p>
       </div>
       
-      <div class="steps" style="grid-template-columns: repeat(3, 1fr);">
-        <div class="step">
-          <div class="step-number">1</div>
-          <h3>Apply Below</h3>
-          <p>Submit the form with your Whop username and we'll add you as an affiliate within 24 hours</p>
-        </div>
-        <div class="step">
-          <div class="step-number">2</div>
-          <h3>Find Your Link</h3>
-          <p>Visit <a href="https://whop.com/affiliates/buyers/" target="_blank">whop.com/affiliates/buyers</a>, find "BettrBot Subscription" and click "View Assets"</p>
-        </div>
-        <div class="step">
-          <div class="step-number">3</div>
-          <h3>Copy & Share</h3>
-          <p>Copy your unique affiliate link and share it with anyone</p>
+      <div class="video-container" style="margin-bottom: 48px;">
+        <div class="video-wrapper">
+          <!-- Update the src to your actual hosted video path -->
+          <video controls playsinline style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain; background: #0d0d14;">
+            <source src="/affiliate-tutorial.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
         </div>
       </div>
 
-      <div class="info-box">
-        <p><strong>Note:</strong> BettrBot has a 7-day free trial. You won't earn commission until your referral is charged after the trial ends. As long as they stay subscribed, you get paid on every monthly payment.</p>
+      <div class="steps">
+        <div class="step">
+          <div class="step-number">1</div>
+          <h3>Create a Whop Account</h3>
+          <p>Sign up for a free account at <a href="https://whop.com/signup" target="_blank">whop.com</a></p>
+        </div>
+        <div class="step">
+          <div class="step-number">2</div>
+          <h3>Go to Affiliates</h3>
+          <p>Click "Affiliates" in the sidebar, then open the "Affiliate Marketplace"</p>
+        </div>
+        <div class="step">
+          <div class="step-number">3</div>
+          <h3>Find BettrBot</h3>
+          <p>Search for "BettrBot" and click "Become an Affiliate"</p>
+        </div>
+        <div class="step">
+          <div class="step-number">4</div>
+          <h3>Get Your Link</h3>
+          <p>Click "View Assets" and copy the affiliate link with the price and commission rate</p>
+        </div>
+        <div class="step">
+          <div class="step-number">5</div>
+          <h3>Share & Earn</h3>
+          <p>Share your unique link with friends, followers, or anyone interested</p>
+        </div>
       </div>
+
+
     </section>
-    
-    <section class="form-section">
-      <div class="form-container">
-        <div class="form-content" id="formContent">
-          <h2>Join the Program</h2>
-          <p class="subtitle">Fill out the form and we'll set up your affiliate account</p>
-          
-          <form id="affiliateForm" action="https://formsubmit.co/riley.dravet@gmail.com" method="POST">
-            <!-- FormSubmit configuration -->
-            <input type="hidden" name="_subject" value="New BettrBot Affiliate Application">
-            <input type="hidden" name="_captcha" value="false">
-            <input type="hidden" name="_template" value="table">
-            <input type="hidden" name="_next" value="https://bettrbot.com/affiliates.html?success=true">
-            
-            <div class="form-group">
-              <label for="email">Email Address</label>
-              <input type="email" id="email" name="email" placeholder="you@example.com" required>
-            </div>
-            
-            <div class="form-group">
-              <label for="whopUsername">Whop Username</label>
-              <input type="text" id="whopUsername" name="whop_username" placeholder="your_username" required>
-              <p class="hint">Don't have one? <a href="https://whop.com/signup" target="_blank">Create a free Whop account</a></p>
-            </div>
-            
-            <button type="submit" class="submit-btn">Apply Now</button>
-          </form>
-        </div>
-        
-        <div class="success-message" id="successMessage">
-          <div class="success-icon">✅</div>
-          <h3>Application Submitted!</h3>
-          <p>We'll review your application and add you as an affiliate within 24 hours. Once approved, follow the steps above to grab your unique link and start earning.</p>
-        </div>
-      </div>
+
+    <section class="cta-section">
+      <p>Ready to start earning? Head to Whop and set up your affiliate link now.</p>
+      <a href="https://whop.com/affiliates/buyers/" target="_blank" class="btn btn-primary">Go to Whop Affiliates →</a>
     </section>
     
     <footer>
       <p class="footer-copy"><a href="/">← Back to BettrBot</a> · © 2026 BettrBot</p>
     </footer>
   </div>
-
-  <script>
-    // Check for success parameter
-    const urlParams = new URLSearchParams(window.location.search);
-    if (urlParams.get('success') === 'true') {
-      document.getElementById('formContent').classList.add('hidden');
-      document.getElementById('successMessage').classList.add('show');
-      // Clean up URL
-      window.history.replaceState({}, document.title, window.location.pathname);
-    }
-  </script>
 </body>
 </html>
