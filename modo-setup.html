@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modo.us Setup Guide - BettrBot</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <link rel="manifest" href="site.webmanifest">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --bg: #0a0a0a;
+            --bg-card: #111111;
+            --border: #222222;
+            --text: #e6edf3;
+            --text-dim: #7d8590;
+            --green: #00d26a;
+            --green-dim: rgba(0, 210, 106, 0.1);
+            --blue: #58a6ff;
+            --red: #f85149;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Nav */
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 24px 24px;
+        }
+        .nav-logo {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 22px;
+            font-weight: 700;
+            text-decoration: none;
+        }
+        .nav-logo .bettr { color: var(--text); }
+        .nav-logo .bot { color: var(--green); }
+        .nav-logo .dot-com { color: var(--text-dim); font-size: 14px; font-weight: 500; }
+        .nav-back {
+            color: var(--text-dim);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        .nav-back:hover { color: var(--text); }
+
+        /* Hero */
+        .hero {
+            text-align: center;
+            padding: 60px 24px 40px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .hero-badge {
+            display: inline-block;
+            padding: 6px 16px;
+            background: var(--green-dim);
+            border: 1px solid rgba(0, 210, 106, 0.2);
+            border-radius: 100px;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--green);
+            margin-bottom: 20px;
+        }
+        .hero h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 40px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            letter-spacing: -0.5px;
+        }
+        .hero p {
+            color: var(--text-dim);
+            font-size: 16px;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        /* Video */
+        .video-section {
+            max-width: 700px;
+            margin: 0 auto 40px;
+            padding: 0 24px;
+        }
+        .video-container {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            overflow: hidden;
+        }
+        .video-container video {
+            width: 100%;
+            display: block;
+        }
+
+        /* Steps */
+        .steps {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 0 24px 80px;
+        }
+        .step {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 32px;
+            margin-bottom: 20px;
+            position: relative;
+        }
+        .step-number {
+            position: absolute;
+            top: -14px;
+            left: 28px;
+            background: var(--green);
+            color: #000;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .step h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+        .step p {
+            color: var(--text-dim);
+            font-size: 14px;
+            line-height: 1.7;
+            margin-bottom: 8px;
+        }
+        .step p:last-child { margin-bottom: 0; }
+
+        .step-code {
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 12px 16px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            color: var(--green);
+            margin: 12px 0;
+            word-break: break-all;
+            user-select: all;
+        }
+
+        .step-note {
+            background: rgba(88, 166, 255, 0.08);
+            border: 1px solid rgba(88, 166, 255, 0.15);
+            border-radius: 8px;
+            padding: 12px 16px;
+            font-size: 13px;
+            color: var(--blue);
+            margin-top: 16px;
+        }
+
+        .step-warning {
+            background: rgba(248, 81, 73, 0.08);
+            border: 1px solid rgba(248, 81, 73, 0.15);
+            border-radius: 8px;
+            padding: 12px 16px;
+            font-size: 13px;
+            color: var(--red);
+            margin-top: 16px;
+        }
+
+        kbd {
+            display: inline-block;
+            padding: 2px 8px;
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            color: var(--text);
+        }
+
+        strong { color: var(--text); }
+
+        .step-img {
+            width: 100%;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            margin: 16px 0 8px;
+        }
+
+        /* Connector line between steps */
+        .step-connector {
+            width: 2px;
+            height: 20px;
+            background: var(--border);
+            margin: 0 auto;
+        }
+
+        /* Support */
+        .support {
+            text-align: center;
+            padding: 40px 24px 60px;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        .support p {
+            color: var(--text-dim);
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+        .support a {
+            color: var(--green);
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .support a:hover { text-decoration: underline; }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 24px;
+            border-top: 1px solid var(--border);
+            color: var(--text-dim);
+            font-size: 12px;
+        }
+
+        @media (max-width: 600px) {
+            .hero h1 { font-size: 28px; }
+            .step { padding: 24px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="nav">
+        <a href="/" class="nav-logo">
+            <span class="bettr">Bettr</span><span class="bot">Bot</span><span class="dot-com">.com</span>
+        </a>
+        <a href="/" class="nav-back">← Back to Home</a>
+    </nav>
+
+    <div class="hero">
+        <div class="hero-badge">Modo.us Setup</div>
+        <h1>How to Connect</h1>
+        <p>Follow these steps to get your Bearer token from Modo.us and connect it to BettrBot.</p>
+    </div>
+
+    <div class="video-section">
+        <div class="video-container">
+            <video controls playsinline>
+                <source src="modo-setup-tutorial.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+    </div>
+
+    <div class="steps">
+
+        <div class="step">
+            <div class="step-number">1</div>
+            <h3>Open Modo.us and Log In</h3>
+            <p>Go to <strong>modo.us</strong> in your browser and log into your account. Make sure you're on the main site (not in the app).</p>
+        </div>
+
+        <div class="step-connector"></div>
+
+        <div class="step">
+            <div class="step-number">2</div>
+            <h3>Open a Blackjack Game</h3>
+            <p>Navigate to <strong>Games</strong> and open any <strong>Blackjack</strong> table. You need to be on the actual game page.</p>
+        </div>
+
+        <div class="step-connector"></div>
+
+        <div class="step">
+            <div class="step-number">3</div>
+            <h3>Open Developer Tools</h3>
+            <p>Press <kbd>F12</kbd> on your keyboard (or <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>I</kbd> on Windows, <kbd>Cmd</kbd> + <kbd>Option</kbd> + <kbd>I</kbd> on Mac) to open DevTools.</p>
+            <p>Click the <strong>Network</strong> tab at the top of the DevTools panel.</p>
+        </div>
+
+        <div class="step-connector"></div>
+
+        <div class="step">
+            <div class="step-number">4</div>
+            <h3>Play One Hand Manually</h3>
+            <p>Place a bet and play one hand of Blackjack in the browser.</p>
+            <div class="step-note">💡 You only need to make one action.</div>
+        </div>
+
+        <div class="step-connector"></div>
+
+        <div class="step">
+            <div class="step-number">5</div>
+            <h3>Find the Bearer Token</h3>
+            <p>In the <strong>Network</strong> tab, click on <strong>Fetch/XHR</strong> to filter the requests. Look for a request to <strong>play</strong> or <strong>pick</strong>.</p>
+            <p>Click on it, then go to the <strong>Headers</strong> tab. Scroll down to <strong>Request Headers</strong> and find the line that says:</p>
+            <div class="step-code">Authorization: Bearer eyJhbGciOiJIUzI1NiIs...</div>
+            <p>Copy everything <strong>after</strong> "Bearer " — that entire long string is your token.</p>
+        </div>
+
+        <div class="step-connector"></div>
+
+        <div class="step">
+            <div class="step-number">6</div>
+            <h3>Paste into BettrBot</h3>
+            <p>Open BettrBot, paste the token into the <strong>Bearer Token</strong> field, and click <strong>Connect</strong>. Your balance will appear and you're ready to play!</p>
+        </div>
+
+    </div>
+
+    <div class="support">
+        <p>Need help? Text us anytime.</p>
+        <a href="sms:+12243044728">(224) 304-4728</a>
+    </div>
+
+    <div class="footer">
+        © 2026 BettrBot. For entertainment purposes only.
+    </div>
+
+</body>
+</html>
