@@ -300,6 +300,69 @@
       font-size: 14px;
     }
     
+    /* Hero Casinos */
+    .hero-casinos {
+      margin-top: 48px;
+    }
+
+    .hero-casinos-label {
+      display: block;
+      color: var(--text-dim);
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      font-weight: 600;
+      margin-bottom: 24px;
+    }
+
+    .hero-casinos-grid {
+      display: flex;
+      justify-content: center;
+      gap: 48px;
+    }
+
+    .casino-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .casino-circle {
+      width: 88px;
+      height: 88px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 2px solid var(--border);
+      transition: all 0.3s;
+      overflow: hidden;
+      background: #111;
+    }
+
+    .casino-circle:hover {
+      border-color: rgba(0, 210, 106, 0.4);
+      transform: scale(1.05);
+    }
+
+    .casino-circle img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .casino-name {
+      color: var(--text-dim);
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    @media (max-width: 768px) {
+      .hero-casinos-grid { gap: 32px; }
+      .casino-circle { width: 72px; height: 72px; }
+    }
+
     /* Features Section */
     .features {
       padding: 120px 0;
@@ -793,7 +856,7 @@
     </nav>
     
     <section class="hero">
-      <div class="badge">Compatible with Stake.us & Shuffle.us</div>
+      <div class="badge">Compatible with Stake.us, Shuffle.us & Modo.us</div>
       <h1>Perfect Strategy.<br>Zero Effort.</h1>
       <p class="hero-subtitle">Automate your blackjack gameplay with mathematically perfect basic strategy. Hit, stand, double, and split—all optimized for maximum RTP.</p>
       <div class="hero-buttons">
@@ -820,12 +883,36 @@
           macOS
         </a>
       </div>
+
+      <div class="hero-casinos">
+        <span class="hero-casinos-label">Supported Casinos</span>
+        <div class="hero-casinos-grid">
+          <div class="casino-item">
+            <div class="casino-circle">
+              <img src="Shuffle.png" alt="Shuffle.us logo">
+            </div>
+            <span class="casino-name">Shuffle.us</span>
+          </div>
+          <div class="casino-item">
+            <div class="casino-circle">
+              <img src="stake-us-1.webp" alt="Stake.us logo">
+            </div>
+            <span class="casino-name">Stake.us</span>
+          </div>
+          <div class="casino-item">
+            <div class="casino-circle">
+              <img src="modo-us-logo.jpg" alt="Modo.us logo">
+            </div>
+            <span class="casino-name">Modo.us</span>
+          </div>
+        </div>
+      </div>
       
       <div class="app-preview">
         <img src="screenshot.PNG" alt="BettrBot App Screenshot">
       </div>
     </section>
-    
+
     <section class="features" id="features">
       <div class="section-title">
         <h2>Built for Winners</h2>
