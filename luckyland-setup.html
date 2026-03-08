@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LuckyLand Slots Setup Guide - BettrBot</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <link rel="manifest" href="site.webmanifest">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --bg: #0a0a0a;
+            --bg-card: #111111;
+            --border: #222222;
+            --text: #e6edf3;
+            --text-dim: #7d8590;
+            --green: #00d26a;
+            --green-dim: rgba(0, 210, 106, 0.1);
+            --blue: #58a6ff;
+            --red: #f85149;
+            --yellow: #d29922;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Top contact banner */
+        .top-banner {
+            background: linear-gradient(90deg, rgba(0, 210, 106, 0.06) 0%, rgba(0, 210, 106, 0.12) 50%, rgba(0, 210, 106, 0.06) 100%);
+            border-bottom: 1px solid rgba(0, 210, 106, 0.1);
+            text-align: center;
+            padding: 11px 24px;
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--text-dim);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        .top-banner-icon {
+            font-size: 15px;
+            line-height: 1;
+        }
+        .top-banner a {
+            color: var(--green);
+            text-decoration: none;
+            font-weight: 700;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 13px;
+            letter-spacing: 0.2px;
+            transition: color 0.2s;
+        }
+        .top-banner a:hover { color: #2bea84; }
+
+        /* Nav */
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 24px 24px;
+        }
+        .nav-logo {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 22px;
+            font-weight: 700;
+            text-decoration: none;
+        }
+        .nav-logo .bettr { color: var(--text); }
+        .nav-logo .bot { color: var(--green); }
+        .nav-logo .dot-com { color: var(--text-dim); font-size: 14px; font-weight: 500; }
+        .nav-back {
+            color: var(--text-dim);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        .nav-back:hover { color: var(--text); }
+
+        /* Hero */
+        .hero {
+            text-align: center;
+            padding: 60px 24px 40px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .hero-badge {
+            display: inline-block;
+            padding: 6px 16px;
+            background: var(--green-dim);
+            border: 1px solid rgba(0, 210, 106, 0.2);
+            border-radius: 100px;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--green);
+            margin-bottom: 20px;
+        }
+        .hero h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 40px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            letter-spacing: -0.5px;
+        }
+        .hero p {
+            color: var(--text-dim);
+            font-size: 16px;
+            max-width: 540px;
+            margin: 0 auto;
+        }
+
+        /* Video */
+        .video-section {
+            max-width: 700px;
+            margin: 0 auto 40px;
+            padding: 0 24px;
+        }
+        .video-container {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            overflow: hidden;
+        }
+        .video-container video {
+            width: 100%;
+            display: block;
+        }
+
+        /* Steps */
+        .steps {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 0 24px 60px;
+        }
+        .step {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 32px;
+            margin-bottom: 20px;
+            position: relative;
+        }
+        .step-number {
+            position: absolute;
+            top: -14px;
+            left: 28px;
+            background: var(--green);
+            color: #000;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .step h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+        .step p {
+            color: var(--text-dim);
+            font-size: 14px;
+            line-height: 1.7;
+            margin-bottom: 8px;
+        }
+        .step p:last-child { margin-bottom: 0; }
+
+        .step-code {
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 12px 16px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            color: var(--green);
+            margin: 12px 0;
+            word-break: break-all;
+            user-select: all;
+        }
+
+        .step-note {
+            background: rgba(88, 166, 255, 0.08);
+            border: 1px solid rgba(88, 166, 255, 0.15);
+            border-radius: 8px;
+            padding: 12px 16px;
+            font-size: 13px;
+            color: var(--blue);
+            margin-top: 16px;
+        }
+
+        .step-warning {
+            background: rgba(248, 81, 73, 0.08);
+            border: 1px solid rgba(248, 81, 73, 0.15);
+            border-radius: 8px;
+            padding: 12px 16px;
+            font-size: 13px;
+            color: var(--red);
+            margin-top: 16px;
+        }
+
+        kbd {
+            display: inline-block;
+            padding: 2px 8px;
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            color: var(--text);
+        }
+
+        strong { color: var(--text); }
+
+        .step-img {
+            width: 100%;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            margin: 16px 0 8px;
+        }
+
+        /* Connector line between steps */
+        .step-connector {
+            width: 2px;
+            height: 20px;
+            background: var(--border);
+            margin: 0 auto;
+        }
+
+        /* FAQ */
+        .faq-section {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 0 24px 80px;
+        }
+        .faq-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 26px;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 32px;
+            letter-spacing: -0.3px;
+        }
+        .faq-item {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            margin-bottom: 12px;
+            overflow: hidden;
+            transition: border-color 0.2s;
+        }
+        .faq-item:hover { border-color: #333; }
+        .faq-question {
+            padding: 20px 24px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 15px;
+            font-weight: 600;
+            user-select: none;
+        }
+        .faq-question:hover { color: var(--green); }
+        .faq-chevron {
+            font-size: 18px;
+            color: var(--text-dim);
+            transition: transform 0.25s ease;
+            flex-shrink: 0;
+            margin-left: 16px;
+        }
+        .faq-item.open .faq-chevron {
+            transform: rotate(180deg);
+        }
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+        }
+        .faq-item.open .faq-answer {
+            max-height: 300px;
+        }
+        .faq-answer-inner {
+            padding: 0 24px 20px;
+            color: var(--text-dim);
+            font-size: 14px;
+            line-height: 1.7;
+        }
+
+        /* Support */
+        .support {
+            text-align: center;
+            padding: 40px 24px 60px;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        .support p {
+            color: var(--text-dim);
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+        .support a {
+            color: var(--green);
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .support a:hover { text-decoration: underline; }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 24px;
+            border-top: 1px solid var(--border);
+            color: var(--text-dim);
+            font-size: 12px;
+        }
+
+        @media (max-width: 600px) {
+            .hero h1 { font-size: 28px; }
+            .step { padding: 24px; }
+            .faq-question { font-size: 14px; padding: 16px 20px; }
+            .faq-answer-inner { padding: 0 20px 16px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="top-banner">
+        <span class="top-banner-icon">💬</span>
+        Still have questions? Text us anytime
+        <a href="sms:+12243044728">(224) 304-4728</a>
+    </div>
+
+    <nav class="nav">
+        <a href="/" class="nav-logo">
+            <span class="bettr">Bettr</span><span class="bot">Bot</span><span class="dot-com">.com</span>
+        </a>
+        <a href="/" class="nav-back">← Back to Home</a>
+    </nav>
+
+    <div class="hero">
+        <div class="hero-badge">LuckyLand Slots Setup</div>
+        <h1>How to Connect</h1>
+        <p>Follow these steps to get your Bearer token and Account ID from LuckyLand Slots and connect to BettrBot.</p>
+    </div>
+
+    <div class="video-section">
+        <div class="video-container">
+            <video controls playsinline>
+                <source src="luckyland-setup-tutorial.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+    </div>
+
+    <div class="steps">
+
+        <div class="step">
+            <div class="step-number">1</div>
+            <h3>Open LuckyLand Slots and Log In</h3>
+            <p>Go to <strong>luckylandslots.com</strong> in your browser and log into your account.</p>
+        </div>
+
+        <div class="step-connector"></div>
+
+        <div class="step">
+            <div class="step-number">2</div>
+            <h3>Open Developer Tools</h3>
+            <p>Press <kbd>F12</kbd> on your keyboard (or <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>I</kbd> on Windows, <kbd>Cmd</kbd> + <kbd>Option</kbd> + <kbd>I</kbd> on Mac) to open DevTools.</p>
+            <p>Click the <strong>Network</strong> tab at the top of the DevTools panel.</p>
+        </div>
+
+        <div class="step-connector"></div>
+
+        <div class="step">
+            <div class="step-number">3</div>
+            <h3>Open Big Hit Blackjack</h3>
+            <p>Navigate to and open <strong>Big Hit Blackjack</strong>. Wait for it to fully load.</p>
+        </div>
+
+        <div class="step-connector"></div>
+
+        <div class="step">
+            <div class="step-number">4</div>
+            <h3>Play One Hand Manually</h3>
+            <p>Place a bet and play one hand of Blackjack in the browser. You only need to make one action (hit, stand, etc.).</p>
+        </div>
+
+        <div class="step-connector"></div>
+
+        <div class="step">
+            <div class="step-number">5</div>
+            <h3>Find the Bearer Token</h3>
+            <p>In the <strong>Network</strong> tab, click on <strong>Fetch/XHR</strong> to filter the requests. Look for a request to <strong>games</strong>.</p>
+            <p>Click on it, then go to the <strong>Headers</strong> tab. Scroll down to <strong>Request Headers</strong> and find:</p>
+            <div class="step-code">authorization: Bearer eyJraWQiOiJhcGktZ2F...</div>
+            <p>Copy everything <strong>after</strong> "Bearer " — that entire long string is your token.</p>
+        </div>
+
+        <div class="step-connector"></div>
+
+        <div class="step">
+            <div class="step-number">6</div>
+            <h3>Find the Account ID</h3>
+            <p>In the same request headers, look for the line that says:</p>
+            <div class="step-code">account-id: 12345678</div>
+            <p>Copy the <strong>number</strong> — this is your Account ID. It's usually 7-8 digits.</p>
+        </div>
+
+        <div class="step-connector"></div>
+
+        <div class="step">
+            <div class="step-number">7</div>
+            <h3>Paste into BettrBot</h3>
+            <p>Open BettrBot, select <strong>LuckyLand Slots</strong>, and click <strong>Manual Setup</strong>. Paste the Bearer token into the <strong>Bearer Token</strong> field, paste the Account ID into the <strong>Account ID</strong> field, and click <strong>Connect</strong>.</p>
+            <p>Your balance will load and you're ready to play!</p>
+        </div>
+
+    </div>
+
+    <div class="faq-section">
+        <h2 class="faq-title">Frequently Asked Questions</h2>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFaq(this)">
+                Where do I find the Account ID?
+                <span class="faq-chevron">▾</span>
+            </div>
+            <div class="faq-answer">
+                <div class="faq-answer-inner">
+                    The Account ID is in the same request headers where you found the Bearer token. Look for the header labeled <strong>account-id</strong> — it's a 7-8 digit number. It should be right near the authorization header.
+                </div>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFaq(this)">
+                My token stopped working — what do I do?
+                <span class="faq-chevron">▾</span>
+            </div>
+            <div class="faq-answer">
+                <div class="faq-answer-inner">
+                    LuckyLand tokens expire after a period of time. When this happens, click <strong>Clear Session</strong> in BettrBot, then repeat the steps above to grab a fresh Bearer token and Account ID. The Account ID usually stays the same, but you'll need a new token each time.
+                </div>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFaq(this)">
+                I don't see any requests in the Network tab
+                <span class="faq-chevron">▾</span>
+            </div>
+            <div class="faq-answer">
+                <div class="faq-answer-inner">
+                    Make sure you have the <strong>Network</strong> tab open and <strong>Fetch/XHR</strong> selected <em>before</em> you play a hand. The requests only appear while DevTools is recording. If it's still empty, try refreshing the page with DevTools open, then play another hand.
+                </div>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFaq(this)">
+                Which request should I click on?
+                <span class="faq-chevron">▾</span>
+            </div>
+            <div class="faq-answer">
+                <div class="faq-answer-inner">
+                    Look for requests with names like <strong>games</strong>. Any of these will have the Bearer token and Account ID in the request headers. If you see multiple, just pick one — they all have the same credentials.
+                </div>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFaq(this)">
+                Does BettrBot work with Gold Coins or Sweepstakes Coins?
+                <span class="faq-chevron">▾</span>
+            </div>
+            <div class="faq-answer">
+                <div class="faq-answer-inner">
+                    BettrBot plays in <strong>Sweepstakes Coins (SC)</strong> mode on LuckyLand. Make sure you're playing in SC mode when you capture your token — the token is the same for both modes, but BettrBot will send bets as SC.
+                </div>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFaq(this)">
+                Can I keep playing in the browser while BettrBot is running?
+                <span class="faq-chevron">▾</span>
+            </div>
+            <div class="faq-answer">
+                <div class="faq-answer-inner">
+                    No — do not play in the browser at the same time as BettrBot. This can cause conflicts and errors. Close the game in your browser once BettrBot is connected and running.
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="support">
+        <p>Need help? Text us anytime.</p>
+        <a href="sms:+12243044728">(224) 304-4728</a>
+    </div>
+
+    <div class="footer">
+        © 2026 BettrBot. For entertainment purposes only.
+    </div>
+
+    <script>
+        function toggleFaq(el) {
+            const item = el.parentElement;
+            // Close all other open items
+            document.querySelectorAll('.faq-item.open').forEach(openItem => {
+                if (openItem !== item) openItem.classList.remove('open');
+            });
+            item.classList.toggle('open');
+        }
+    </script>
+
+</body>
+</html>
