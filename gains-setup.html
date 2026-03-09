@@ -1,491 +1,416 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gains Setup Guide - BettrBot</title>
-    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
-    <link rel="apple-touch-icon" href="apple-touch-icon.png">
-    <link rel="manifest" href="site.webmanifest">
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        :root {
-            --bg: #0a0a0a;
-            --bg-card: #111111;
-            --border: #222222;
-            --text: #e6edf3;
-            --text-dim: #7d8590;
-            --green: #00d26a;
-            --green-dim: rgba(0, 210, 106, 0.1);
-            --blue: #58a6ff;
-            --red: #f85149;
-            --yellow: #d29922;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Switch to User/Pass — BettrBot</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
-        body {
-            font-family: 'Inter', sans-serif;
-            background: var(--bg);
-            color: var(--text);
-            line-height: 1.6;
-            -webkit-font-smoothing: antialiased;
-        }
+    :root {
+      --bg: #0a0b10;
+      --bg-card: #12141c;
+      --bg-step: #161923;
+      --border: #1e2230;
+      --border-active: #2a3040;
+      --text: #e2e4ea;
+      --text-dim: #6b7080;
+      --green: #3fb950;
+      --green-dim: rgba(63, 185, 80, 0.12);
+      --green-glow: rgba(63, 185, 80, 0.06);
+      --red: #d4736c;
+      --accent: #00d26a;
+    }
 
-        /* Top contact banner */
-        .top-banner {
-            background: linear-gradient(90deg, rgba(0, 210, 106, 0.06) 0%, rgba(0, 210, 106, 0.12) 50%, rgba(0, 210, 106, 0.06) 100%);
-            border-bottom: 1px solid rgba(0, 210, 106, 0.1);
-            text-align: center;
-            padding: 11px 24px;
-            font-size: 13px;
-            font-weight: 500;
-            color: var(--text-dim);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-        }
-        .top-banner-icon {
-            font-size: 15px;
-            line-height: 1;
-        }
-        .top-banner a {
-            color: var(--green);
-            text-decoration: none;
-            font-weight: 700;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 13px;
-            letter-spacing: 0.2px;
-            transition: color 0.2s;
-        }
-        .top-banner a:hover { color: #2bea84; }
+    /* Top contact banner */
+    .top-banner {
+      background: linear-gradient(90deg, rgba(63, 185, 80, 0.06) 0%, rgba(63, 185, 80, 0.12) 50%, rgba(63, 185, 80, 0.06) 100%);
+      border-bottom: 1px solid rgba(63, 185, 80, 0.1);
+      text-align: center;
+      padding: 11px 24px;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text-dim);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      position: relative;
+      z-index: 2;
+    }
+    .top-banner-icon { font-size: 15px; line-height: 1; }
+    .top-banner a {
+      color: var(--green);
+      text-decoration: none;
+      font-weight: 700;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      letter-spacing: 0.2px;
+      transition: color 0.2s;
+    }
+    .top-banner a:hover { color: #2bea84; }
 
-        /* Nav */
-        .nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 24px 24px;
-        }
-        .nav-logo {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 22px;
-            font-weight: 700;
-            text-decoration: none;
-        }
-        .nav-logo .bettr { color: var(--text); }
-        .nav-logo .bot { color: var(--green); }
-        .nav-logo .dot-com { color: var(--text-dim); font-size: 14px; font-weight: 500; }
-        .nav-back {
-            color: var(--text-dim);
-            text-decoration: none;
-            font-size: 14px;
-            font-weight: 500;
-            transition: color 0.2s;
-        }
-        .nav-back:hover { color: var(--text); }
+    body {
+      font-family: 'Space Grotesk', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
 
-        /* Hero */
-        .hero {
-            text-align: center;
-            padding: 60px 24px 40px;
-            max-width: 900px;
-            margin: 0 auto;
-        }
-        .hero-badge {
-            display: inline-block;
-            padding: 6px 16px;
-            background: var(--green-dim);
-            border: 1px solid rgba(0, 210, 106, 0.2);
-            border-radius: 100px;
-            font-size: 13px;
-            font-weight: 600;
-            color: var(--green);
-            margin-bottom: 20px;
-        }
-        .hero h1 {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 40px;
-            font-weight: 700;
-            margin-bottom: 12px;
-            letter-spacing: -0.5px;
-        }
-        .hero p {
-            color: var(--text-dim);
-            font-size: 16px;
-            max-width: 540px;
-            margin: 0 auto;
-        }
+    /* Subtle grid background */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.012) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.012) 1px, transparent 1px);
+      background-size: 60px 60px;
+      pointer-events: none;
+      z-index: 0;
+    }
 
-        /* Video */
-        .video-section {
-            max-width: 700px;
-            margin: 0 auto 40px;
-            padding: 0 24px;
-        }
-        .video-container {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            overflow: hidden;
-        }
-        .video-container video {
-            width: 100%;
-            display: block;
-        }
+    /* Top glow */
+    body::after {
+      content: '';
+      position: fixed;
+      top: -200px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 800px;
+      height: 500px;
+      background: radial-gradient(ellipse, rgba(63, 185, 80, 0.05) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
 
-        /* Steps */
-        .steps {
-            max-width: 700px;
-            margin: 0 auto;
-            padding: 0 24px 60px;
-        }
-        .step {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 32px;
-            margin-bottom: 20px;
-            position: relative;
-        }
-        .step-number {
-            position: absolute;
-            top: -14px;
-            left: 28px;
-            background: var(--green);
-            color: #000;
-            width: 28px;
-            height: 28px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-family: 'Space Grotesk', sans-serif;
-            font-weight: 700;
-            font-size: 14px;
-        }
-        .step h3 {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 18px;
-            font-weight: 600;
-            margin-bottom: 12px;
-        }
-        .step p {
-            color: var(--text-dim);
-            font-size: 14px;
-            line-height: 1.7;
-            margin-bottom: 8px;
-        }
-        .step p:last-child { margin-bottom: 0; }
+    .page {
+      position: relative;
+      z-index: 1;
+      max-width: 640px;
+      margin: 0 auto;
+      padding: 48px 24px 80px;
+    }
 
-        .step-code {
-            background: var(--bg);
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            padding: 12px 16px;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 12px;
-            color: var(--green);
-            margin: 12px 0;
-            word-break: break-all;
-            user-select: all;
-        }
+    /* Header */
+    .header {
+      text-align: center;
+      margin-bottom: 48px;
+    }
 
-        .step-note {
-            background: rgba(88, 166, 255, 0.08);
-            border: 1px solid rgba(88, 166, 255, 0.15);
-            border-radius: 8px;
-            padding: 12px 16px;
-            font-size: 13px;
-            color: var(--blue);
-            margin-top: 16px;
-        }
+    .logo {
+      display: inline-flex;
+      align-items: baseline;
+      gap: 0;
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      margin-bottom: 24px;
+    }
 
-        .step-warning {
-            background: rgba(248, 81, 73, 0.08);
-            border: 1px solid rgba(248, 81, 73, 0.15);
-            border-radius: 8px;
-            padding: 12px 16px;
-            font-size: 13px;
-            color: var(--red);
-            margin-top: 16px;
-        }
+    .logo .bettr { color: var(--text); }
+    .logo .bot { color: var(--accent); }
 
-        kbd {
-            display: inline-block;
-            padding: 2px 8px;
-            background: var(--bg);
-            border: 1px solid var(--border);
-            border-radius: 4px;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 12px;
-            color: var(--text);
-        }
+    .header h1 {
+      font-size: 28px;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      line-height: 1.2;
+      margin-bottom: 10px;
+    }
 
-        strong { color: var(--text); }
+    .header h1 span { color: var(--accent); }
 
-        .step-img {
-            width: 100%;
-            border-radius: 8px;
-            border: 1px solid var(--border);
-            margin: 16px 0 8px;
-        }
+    .header p {
+      color: var(--text-dim);
+      font-size: 15px;
+      line-height: 1.5;
+    }
 
-        /* Connector line between steps */
-        .step-connector {
-            width: 2px;
-            height: 20px;
-            background: var(--border);
-            margin: 0 auto;
-        }
+    /* Steps */
+    .steps {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
 
-        /* FAQ */
-        .faq-section {
-            max-width: 700px;
-            margin: 0 auto;
-            padding: 0 24px 80px;
-        }
-        .faq-title {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 26px;
-            font-weight: 700;
-            text-align: center;
-            margin-bottom: 32px;
-            letter-spacing: -0.3px;
-        }
-        .faq-item {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            margin-bottom: 12px;
-            overflow: hidden;
-            transition: border-color 0.2s;
-        }
-        .faq-item:hover { border-color: #333; }
-        .faq-question {
-            padding: 20px 24px;
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 15px;
-            font-weight: 600;
-            user-select: none;
-        }
-        .faq-question:hover { color: var(--green); }
-        .faq-chevron {
-            font-size: 18px;
-            color: var(--text-dim);
-            transition: transform 0.25s ease;
-            flex-shrink: 0;
-            margin-left: 16px;
-        }
-        .faq-item.open .faq-chevron {
-            transform: rotate(180deg);
-        }
-        .faq-answer {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease, padding 0.3s ease;
-        }
-        .faq-item.open .faq-answer {
-            max-height: 300px;
-        }
-        .faq-answer-inner {
-            padding: 0 24px 20px;
-            color: var(--text-dim);
-            font-size: 14px;
-            line-height: 1.7;
-        }
+    .step {
+      position: relative;
+      display: flex;
+      gap: 18px;
+      padding: 22px 24px;
+      background: var(--bg-step);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      transition: border-color 0.3s, box-shadow 0.3s, transform 0.3s;
+      cursor: default;
+      opacity: 0;
+      transform: translateY(12px);
+      animation: stepIn 0.5s ease forwards;
+    }
 
-        /* Support */
-        .support {
-            text-align: center;
-            padding: 40px 24px 60px;
-            max-width: 700px;
-            margin: 0 auto;
-        }
-        .support p {
-            color: var(--text-dim);
-            font-size: 14px;
-            margin-bottom: 8px;
-        }
-        .support a {
-            color: var(--green);
-            text-decoration: none;
-            font-weight: 600;
-        }
-        .support a:hover { text-decoration: underline; }
+    .step:nth-child(1) { animation-delay: 0.1s; }
+    .step:nth-child(2) { animation-delay: 0.2s; }
+    .step:nth-child(3) { animation-delay: 0.3s; }
+    .step:nth-child(4) { animation-delay: 0.4s; }
+    .step:nth-child(5) { animation-delay: 0.5s; }
+    .step:nth-child(6) { animation-delay: 0.6s; }
 
-        /* Footer */
-        .footer {
-            text-align: center;
-            padding: 24px;
-            border-top: 1px solid var(--border);
-            color: var(--text-dim);
-            font-size: 12px;
-        }
+    @keyframes stepIn {
+      to { opacity: 1; transform: translateY(0); }
+    }
 
-        @media (max-width: 600px) {
-            .hero h1 { font-size: 28px; }
-            .step { padding: 24px; }
-            .faq-question { font-size: 14px; padding: 16px 20px; }
-            .faq-answer-inner { padding: 0 20px 16px; }
-        }
-    </style>
+    .step:hover {
+      border-color: var(--border-active);
+      box-shadow: 0 0 0 1px var(--border-active), 0 8px 32px rgba(0,0,0,0.25);
+      transform: translateY(-1px);
+    }
+
+    /* Step number */
+    .step-num {
+      flex-shrink: 0;
+      width: 36px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 10px;
+      background: var(--green-dim);
+      border: 1px solid rgba(63, 185, 80, 0.2);
+      color: var(--green);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 14px;
+      font-weight: 600;
+      margin-top: 1px;
+    }
+
+    .step-content {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .step-title {
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 4px;
+      letter-spacing: -0.2px;
+    }
+
+    .step-desc {
+      color: var(--text-dim);
+      font-size: 13.5px;
+      line-height: 1.55;
+    }
+
+    .step-desc code {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.06);
+      padding: 2px 7px;
+      border-radius: 5px;
+      color: var(--text);
+      white-space: nowrap;
+    }
+
+    .step-path {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 8px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      color: var(--green);
+      opacity: 0.7;
+    }
+
+    .step-path .arrow {
+      color: var(--text-dim);
+      opacity: 0.4;
+    }
+
+    /* Connector lines between steps */
+    .step::before {
+      content: '';
+      position: absolute;
+      left: 41px;
+      top: -16px;
+      width: 1px;
+      height: 16px;
+      background: linear-gradient(to bottom, transparent, var(--border));
+    }
+
+    .step:first-child::before {
+      display: none;
+    }
+
+    /* Warning callout */
+    .callout {
+      display: flex;
+      gap: 12px;
+      padding: 16px 20px;
+      background: rgba(212, 115, 108, 0.06);
+      border: 1px solid rgba(212, 115, 108, 0.15);
+      border-radius: 12px;
+      margin-top: 8px;
+    }
+
+    .callout-icon {
+      flex-shrink: 0;
+      font-size: 16px;
+      margin-top: 1px;
+    }
+
+    .callout-text {
+      font-size: 12.5px;
+      line-height: 1.5;
+      color: var(--red);
+      opacity: 0.9;
+    }
+
+    /* Done section */
+    .done {
+      text-align: center;
+      margin-top: 40px;
+      padding: 28px 24px;
+      background: var(--green-glow);
+      border: 1px solid rgba(63, 185, 80, 0.1);
+      border-radius: 14px;
+      opacity: 0;
+      animation: stepIn 0.5s ease 0.75s forwards;
+    }
+
+    .done-icon {
+      font-size: 28px;
+      margin-bottom: 10px;
+    }
+
+    .done h3 {
+      font-size: 17px;
+      font-weight: 600;
+      margin-bottom: 6px;
+      color: var(--green);
+    }
+
+    .done p {
+      color: var(--text-dim);
+      font-size: 13.5px;
+      line-height: 1.5;
+    }
+
+    /* Footer */
+    .footer {
+      text-align: center;
+      margin-top: 48px;
+      opacity: 0;
+      animation: stepIn 0.5s ease 0.9s forwards;
+    }
+
+    .footer a {
+      color: var(--text-dim);
+      font-size: 13px;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer a:hover { color: var(--green); }
+
+    /* Mobile */
+    @media (max-width: 480px) {
+      .page { padding: 32px 16px 60px; }
+      .header h1 { font-size: 22px; }
+      .step { padding: 18px 16px; gap: 14px; }
+      .step-num { width: 32px; height: 32px; font-size: 13px; }
+      .step-title { font-size: 15px; }
+    }
+  </style>
 </head>
 <body>
-
-    <div class="top-banner">
-        <span class="top-banner-icon">💬</span>
-        Still have questions? Text us anytime
-        <a href="sms:+12243044728">(224) 304-4728</a>
-    </div>
-
-    <nav class="nav">
-        <a href="/" class="nav-logo">
-            <span class="bettr">Bettr</span><span class="bot">Bot</span><span class="dot-com">.com</span>
-        </a>
-        <a href="/" class="nav-back">← Back to Home</a>
-    </nav>
-
-    <div class="hero">
-        <div class="hero-badge">Gains Setup</div>
-        <h1>How to Connect</h1>
-        <p>Follow these steps to get your Bearer token from Gains and connect it to BettrBot.</p>
-    </div>
-
-    <div class="video-section">
-        <div class="video-container">
-            <video controls playsinline>
-                <source src="gains-setup-tutorial.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
-        </div>
+  <div class="top-banner">
+    <span class="top-banner-icon">💬</span>
+    Still have questions? Text us anytime
+    <a href="sms:+12243044728">(224) 304-4728</a>
+  </div>
+  <div class="page">
+    <div class="header">
+      <div class="logo"><span class="bettr">Bettr</span><span class="bot">Bot</span></div>
+      <h1>Switch from Google to <span>User/Pass</span></h1>
+      <p>BettrBot needs an email &amp; password login to connect to Shuffle.us. If you signed up with Google, follow these steps to add a password to your account.</p>
     </div>
 
     <div class="steps">
 
-        <div class="step">
-            <div class="step-number">1</div>
-            <h3>Log into Gains</h3>
-            <p>Go to <strong>gains.com</strong> in your browser and log into your account.</p>
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-content">
+          <div class="step-title">Log in to Shuffle.us</div>
+          <div class="step-desc">Go to <code>shuffle.us</code> and sign in with your Google account like you normally would.</div>
         </div>
+      </div>
 
-        <div class="step-connector"></div>
-
-        <div class="step">
-            <div class="step-number">2</div>
-            <h3>Open Developer Tools</h3>
-            <p>Press <kbd>F12</kbd> on your keyboard (or <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>I</kbd> on Windows, <kbd>Cmd</kbd> + <kbd>Option</kbd> + <kbd>I</kbd> on Mac) to open DevTools.</p>
-            <p>Click the <strong>Network</strong> tab at the top of the DevTools panel.</p>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-content">
+          <div class="step-title">Open Settings</div>
+          <div class="step-desc">Click your profile icon in the top-right corner, then select <code>Settings</code> from the dropdown menu.</div>
         </div>
+      </div>
 
-        <div class="step-connector"></div>
-
-        <div class="step">
-            <div class="step-number">3</div>
-            <h3>Open Blackjack</h3>
-            <p>Navigate to and open <strong>Blackjack</strong>. Wait for it to fully load.</p>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-content">
+          <div class="step-title">Go to Security</div>
+          <div class="step-desc">In the Settings page, find and click the <code>Security</code> tab.</div>
+          <div class="step-path">
+            <span>Settings</span>
+            <span class="arrow">›</span>
+            <span>Security</span>
+          </div>
         </div>
+      </div>
 
-        <div class="step-connector"></div>
-
-        <div class="step">
-            <div class="step-number">4</div>
-            <h3>Find the Bearer Token</h3>
-            <p>In the <strong>Network</strong> tab, click on <strong>Fetch/XHR</strong> to filter the requests. Look for a request called <strong>active-game</strong>.</p>
-            <p>Click on it, then go to the <strong>Headers</strong> tab. Scroll down to <strong>Request Headers</strong> and find:</p>
-            <div class="step-code">authorization: Bearer eyJhbGciOiJSUzI1NiIs...</div>
-            <p>Copy everything <strong>after</strong> "Bearer " — that entire long string is your token.</p>
+      <div class="step">
+        <div class="step-num">4</div>
+        <div class="step-content">
+          <div class="step-title">Unlink your Google account</div>
+          <div class="step-desc">Find the Google linked account section and click to unlink it. This removes Google as your login method.</div>
+          <div class="callout">
+            <div class="callout-icon">⚠️</div>
+            <div class="callout-text">Make sure you set a password (next step) before logging out, or you won't be able to sign back in.</div>
+          </div>
         </div>
+      </div>
 
-        <div class="step-connector"></div>
-
-        <div class="step">
-            <div class="step-number">5</div>
-            <h3>Paste into BettrBot</h3>
-            <p>Open BettrBot, select <strong>Gains</strong>, and click <strong>Manual Setup</strong>. Paste the Bearer token into the <strong>Bearer Token</strong> field and click <strong>Connect</strong>.</p>
-            <p>You're ready to play!</p>
+      <div class="step">
+        <div class="step-num">5</div>
+        <div class="step-content">
+          <div class="step-title">Click "Change Password"</div>
+          <div class="step-desc">On the same Security page, click <code>Change Password</code> to set a new password for your account.</div>
         </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">6</div>
+        <div class="step-content">
+          <div class="step-title">Enter &amp; confirm your new password</div>
+          <div class="step-desc">Type your new password, confirm it, and save. You can now log in to Shuffle.us with your email and this password.</div>
+        </div>
+      </div>
 
     </div>
 
-    <div class="faq-section">
-        <h2 class="faq-title">Frequently Asked Questions</h2>
-
-        <div class="faq-item">
-            <div class="faq-question" onclick="toggleFaq(this)">
-                I don't see the active-game request in the Network tab
-                <span class="faq-chevron">▾</span>
-            </div>
-            <div class="faq-answer">
-                <div class="faq-answer-inner">
-                    Make sure you have DevTools open with the <strong>Network</strong> tab and <strong>Fetch/XHR</strong> selected <em>before</em> you open Blackjack. The request fires when the game loads, so DevTools needs to be recording first. If you missed it, refresh the page.
-                </div>
-            </div>
-        </div>
-
-        <div class="faq-item">
-            <div class="faq-question" onclick="toggleFaq(this)">
-                My token stopped working — what do I do?
-                <span class="faq-chevron">▾</span>
-            </div>
-            <div class="faq-answer">
-                <div class="faq-answer-inner">
-                    Gains tokens expire after a period of time. When this happens, click <strong>Clear Session</strong> in BettrBot, then repeat the steps above to grab a fresh Bearer token from a new active-game request.
-                </div>
-            </div>
-        </div>
-
-        <div class="faq-item">
-            <div class="faq-question" onclick="toggleFaq(this)">
-                Does BettrBot work with Gold Coins or Sweepstakes Coins?
-                <span class="faq-chevron">▾</span>
-            </div>
-            <div class="faq-answer">
-                <div class="faq-answer-inner">
-                    BettrBot plays in <strong>Sweepstakes Coins (SC)</strong> mode on Gains. Make sure you're in SC mode when you open Blackjack.
-                </div>
-            </div>
-        </div>
-
-        <div class="faq-item">
-            <div class="faq-question" onclick="toggleFaq(this)">
-                Can I keep playing in the browser while BettrBot is running?
-                <span class="faq-chevron">▾</span>
-            </div>
-            <div class="faq-answer">
-                <div class="faq-answer-inner">
-                    No — do not play in the browser at the same time as BettrBot. This can cause conflicts and errors. Close the game in your browser once BettrBot is connected and running.
-                </div>
-            </div>
-        </div>
-
-    </div>
-
-    <div class="support">
-        <p>Need help? Text us anytime.</p>
-        <a href="sms:+12243044728">(224) 304-4728</a>
+    <div class="done">
+      <div class="done-icon">✅</div>
+      <h3>You're all set</h3>
+      <p>Open BettrBot, select Shuffle.us, and click <strong>User/Pass</strong> to log in with your email and new password.</p>
     </div>
 
     <div class="footer">
-        © 2026 BettrBot. For entertainment purposes only.
+      <a href="https://bettrbot.com">← Back to bettrbot.com</a>
     </div>
-
-    <script>
-        function toggleFaq(el) {
-            const item = el.parentElement;
-            document.querySelectorAll('.faq-item.open').forEach(openItem => {
-                if (openItem !== item) openItem.classList.remove('open');
-            });
-            item.classList.toggle('open');
-        }
-    </script>
-
+  </div>
 </body>
 </html>
