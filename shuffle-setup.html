@@ -24,6 +24,34 @@
       --accent: #00d26a;
     }
 
+    /* Top contact banner */
+    .top-banner {
+      background: linear-gradient(90deg, rgba(63, 185, 80, 0.06) 0%, rgba(63, 185, 80, 0.12) 50%, rgba(63, 185, 80, 0.06) 100%);
+      border-bottom: 1px solid rgba(63, 185, 80, 0.1);
+      text-align: center;
+      padding: 11px 24px;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text-dim);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      position: relative;
+      z-index: 2;
+    }
+    .top-banner-icon { font-size: 15px; line-height: 1; }
+    .top-banner a {
+      color: var(--green);
+      text-decoration: none;
+      font-weight: 700;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      letter-spacing: 0.2px;
+      transition: color 0.2s;
+    }
+    .top-banner a:hover { color: #2bea84; }
+
     body {
       font-family: 'Space Grotesk', sans-serif;
       background: var(--bg);
@@ -301,6 +329,11 @@
   </style>
 </head>
 <body>
+  <div class="top-banner">
+    <span class="top-banner-icon">💬</span>
+    Still have questions? Text us anytime
+    <a href="sms:+12243044728">(224) 304-4728</a>
+  </div>
   <div class="page">
     <div class="header">
       <div class="logo"><span class="bettr">Bettr</span><span class="bot">Bot</span></div>
