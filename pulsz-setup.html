@@ -398,10 +398,10 @@
         <div class="step">
             <div class="step-number">4</div>
             <h3>Find the :path</h3>
-            <p>In the <strong>Network</strong> tab, click on <strong>Fetch/XHR</strong> to filter the requests. Look for a request to <strong>ClassicMultihandBlackjack</strong>.</p>
-            <p>Click on it, then go to the <strong>Headers</strong> tab. Scroll down to <strong>Request Headers</strong> and find:</p>
-            <div class="step-code">:path: /api/ClassicMultihandBlackjack/12345678/a1b2c3d4-e5f6-7890-abcd-ef1234567890</div>
-            <p>Copy the <strong>entire value</strong> after ":path: " — this is your session path.</p>
+            <p>In the <strong>Network</strong> tab, click on <strong>Fetch/XHR</strong> to filter the requests. Look for a request named something like <strong>60b02338-370a-439a-b13f-286417491ac6</strong> (yours will be different, but it will follow the same format).</p>
+            <p>Click on it, then go to the <strong>Headers</strong> tab. Scroll down to <strong>Request Headers</strong> and find the <strong>:path</strong> header. It will look like:</p>
+            <div class="step-code">/api/ClassicMultihandBlackjack/17112523/60b02338-370a-439a-b13f-286417491ac6</div>
+            <p>Copy the <strong>entire :path value</strong> — this is your session path.</p>
         </div>
 
         <div class="step-connector"></div>
@@ -409,7 +409,7 @@
         <div class="step">
             <div class="step-number">5</div>
             <h3>Find the x-csrf-token</h3>
-            <p>In the same request headers, look for:</p>
+            <p>In the same request headers, look for (you may need to scroll all the way down):</p>
             <div class="step-code">x-csrf-token: f0anAqiCp97yKJXl...</div>
             <p>Copy the <strong>entire value</strong> — this is your CSRF token.</p>
         </div>
@@ -430,7 +430,7 @@
 
         <div class="faq-item">
             <div class="faq-question" onclick="toggleFaq(this)">
-                I don't see the ClassicMultihandBlackjack request
+                I don't see the request in the Network tab
                 <span class="faq-chevron">▾</span>
             </div>
             <div class="faq-answer">
