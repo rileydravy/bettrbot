@@ -179,6 +179,11 @@
       flex-wrap: wrap;
     }
     
+    .hero-buttons .btn {
+      min-width: 240px;
+      justify-content: center;
+    }
+    
     .hero-downloads {
       display: flex;
       gap: 12px;
@@ -215,6 +220,30 @@
     .hero-download-btn.disabled {
       opacity: 0.5;
       pointer-events: none;
+    }
+    
+    .download-divider {
+      color: var(--text-dim);
+      font-size: 14px;
+      user-select: none;
+    }
+    
+    .how-to-dl-link {
+      background: none;
+      border: none;
+      color: var(--text-dim);
+      font-family: inherit;
+      font-size: 13px;
+      font-weight: 500;
+      cursor: pointer;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      transition: color 0.2s;
+      padding: 0;
+    }
+    
+    .how-to-dl-link:hover {
+      color: var(--green);
     }
     
     .soon-badge {
@@ -438,7 +467,7 @@
     
     .stats-grid {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(3, 1fr);
       gap: 48px;
       text-align: center;
     }
@@ -853,7 +882,6 @@
         <a href="#features">Features</a>
         <a href="#how-it-works">How It Works</a>
         <a href="/affiliates.html">Affiliates</a>
-        <a href="https://whop.com/bettrbot/blackjack-bot/" target="_blank" class="btn btn-primary" style="padding: 10px 20px; font-size: 14px;">Get Access</a>
       </div>
     </nav>
     
@@ -861,11 +889,11 @@
       <h1>Perfect Strategy.<br>Zero Effort.</h1>
       <p class="hero-subtitle">Automate your blackjack gameplay with mathematically perfect basic strategy. Hit, stand, double, and split—all optimized for maximum RTP.</p>
       <div class="hero-buttons">
-        <button class="btn btn-secondary" id="howToDownloadBtn">
-          How to Download
-        </button>
-        <a href="https://whop.com/bettrbot/blackjack-bot/" target="_blank" class="btn btn-primary">
-          Get Access <span class="price-tag">$25/mo</span>
+        <a href="https://whop.com/bettrbot/basic-access-89-ecc5/" target="_blank" class="btn btn-primary">
+          Basic Access <span class="price-tag">$35/mo</span>
+        </a>
+        <a href="https://whop.com/bettrbot/full-suite-access/" target="_blank" class="btn btn-primary">
+          Full Suite <span class="price-tag">$65/mo</span>
         </a>
       </div>
       
@@ -883,6 +911,8 @@
           </svg>
           macOS
         </a>
+        <span class="download-divider">·</span>
+        <button class="how-to-dl-link" id="howToDownloadBtn">How to Download</button>
       </div>
 
       <div class="hero-casinos">
@@ -1004,10 +1034,6 @@
             <div class="stat-value">24/7</div>
             <div class="stat-label">Automation</div>
           </div>
-          <div class="stat">
-            <div class="stat-value">$25</div>
-            <div class="stat-label">Per Month</div>
-          </div>
         </div>
       </div>
     </section>
@@ -1041,9 +1067,14 @@
       <div class="cta-box">
         <h2>Ready to Play Perfect?</h2>
         <p>Join players using mathematically optimal strategy on every hand.</p>
-        <a href="https://whop.com/bettrbot/blackjack-bot/" target="_blank" class="btn btn-primary">
-          Get BettrBot <span class="price-tag">$25/mo</span>
-        </a>
+        <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
+          <a href="https://whop.com/bettrbot/basic-access-89-ecc5/" target="_blank" class="btn btn-primary">
+            Basic Access <span class="price-tag">$35/mo</span>
+          </a>
+          <a href="https://whop.com/bettrbot/full-suite-access/" target="_blank" class="btn btn-primary">
+            Full Suite <span class="price-tag">$65/mo</span>
+          </a>
+        </div>
       </div>
     </section>
     
