@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Info - BettrBot</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <link rel="manifest" href="site.webmanifest">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --bg: #0a0a0a;
+            --bg-card: #111111;
+            --border: #222222;
+            --text: #e6edf3;
+            --text-dim: #7d8590;
+            --green: #00d26a;
+            --green-dim: rgba(0, 210, 106, 0.1);
+            --blue: #58a6ff;
+            --red: #f85149;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Nav */
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 24px 24px;
+        }
+        .nav-logo {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 22px;
+            font-weight: 700;
+            text-decoration: none;
+        }
+        .nav-logo .bettr { color: var(--text); }
+        .nav-logo .bot { color: var(--green); }
+        .nav-logo .dot-com { color: var(--text-dim); font-size: 14px; font-weight: 500; }
+        .nav-back {
+            color: var(--text-dim);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        .nav-back:hover { color: var(--text); }
+
+        /* Hero */
+        .hero {
+            text-align: center;
+            padding: 60px 24px 40px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .hero-badge {
+            display: inline-block;
+            padding: 6px 16px;
+            background: var(--green-dim);
+            border: 1px solid rgba(0, 210, 106, 0.2);
+            border-radius: 100px;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--green);
+            margin-bottom: 20px;
+        }
+        .hero h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 40px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            letter-spacing: -0.5px;
+        }
+        .hero p {
+            color: var(--text-dim);
+            font-size: 16px;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        /* Updates */
+        .updates {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 0 24px 80px;
+        }
+
+        .update {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 32px;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .update-version {
+            position: absolute;
+            top: -14px;
+            left: 28px;
+            background: var(--green);
+            color: #000;
+            padding: 4px 14px;
+            border-radius: 100px;
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 700;
+            font-size: 13px;
+        }
+
+        .update h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            padding-top: 4px;
+        }
+
+        .update-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 14px;
+        }
+        .update-item:last-child { margin-bottom: 0; }
+
+        .update-icon {
+            flex-shrink: 0;
+            width: 28px;
+            height: 28px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+        }
+        .update-icon.feature {
+            background: var(--green-dim);
+            border: 1px solid rgba(0, 210, 106, 0.2);
+        }
+        .update-icon.fix {
+            background: rgba(88, 166, 255, 0.08);
+            border: 1px solid rgba(88, 166, 255, 0.15);
+        }
+
+        .update-content h4 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 15px;
+            font-weight: 600;
+            margin-bottom: 2px;
+        }
+        .update-content p {
+            color: var(--text-dim);
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        /* Connector line between updates */
+        .update-connector {
+            width: 2px;
+            height: 20px;
+            background: var(--border);
+            margin: 0 auto;
+        }
+
+        /* Support */
+        .support {
+            text-align: center;
+            padding: 40px 24px 60px;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        .support p {
+            color: var(--text-dim);
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+        .support a {
+            color: var(--green);
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .support a:hover { text-decoration: underline; }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 24px;
+            border-top: 1px solid var(--border);
+            color: var(--text-dim);
+            font-size: 12px;
+        }
+
+        @media (max-width: 600px) {
+            .hero h1 { font-size: 28px; }
+            .update { padding: 24px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="nav">
+        <a href="/" class="nav-logo">
+            <span class="bettr">Bettr</span><span class="bot">Bot</span><span class="dot-com">.com</span>
+        </a>
+        <a href="/" class="nav-back">← Back to Home</a>
+    </nav>
+
+    <div class="hero">
+        <h1>What's New</h1>
+        <p>See what's been added, improved, and fixed in each update.</p>
+    </div>
+
+    <div class="updates">
+
+        <div class="update">
+            <div class="update-version">v2.0.7</div>
+            <h3>Latest Release</h3>
+
+            <div class="update-item">
+                <div class="update-icon feature">🚀</div>
+                <div class="update-content">
+                    <h4>Multi-Instance Support</h4>
+                    <p>Run up to 4 instances of BettrBot at the same time. Play on multiple sites simultaneously without needing separate installs.</p>
+                </div>
+            </div>
+
+            <div class="update-item">
+                <div class="update-icon feature">🎯</div>
+                <div class="update-content">
+                    <h4>Custom Bet Strategy</h4>
+                    <p>Create your own strategy charts with the built-in editor. Customize hit, stand, double, and split decisions for every hand. Save up to 12 custom strategies.</p>
+                </div>
+            </div>
+
+            <div class="update-item">
+                <div class="update-icon feature">✨</div>
+                <div class="update-content">
+                    <h4>Improved UI</h4>
+                    <p>Cleaner layout, smoother interactions, and quality of life improvements across the app.</p>
+                </div>
+            </div>
+
+            <div class="update-item">
+                <div class="update-icon fix">🔧</div>
+                <div class="update-content">
+                    <h4>Bug Fixes</h4>
+                    <p>Resolved various issues with Pulsz and Modo for improved stability and reliability.</p>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="support">
+        <p>Need help? Text us anytime.</p>
+        <a href="sms:+12243044728">(224) 304-4728</a>
+    </div>
+
+    <div class="footer">
+        © 2026 BettrBot. For entertainment purposes only.
+    </div>
+
+</body>
+</html>
