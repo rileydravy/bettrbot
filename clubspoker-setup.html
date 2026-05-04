@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ClubsPoker Setup Guide - BettrBot</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <link rel="manifest" href="site.webmanifest">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --bg: #0a0a0a;
+            --bg-card: #111111;
+            --border: #222222;
+            --text: #e6edf3;
+            --text-dim: #7d8590;
+            --green: #00d26a;
+            --green-dim: rgba(0, 210, 106, 0.1);
+            --blue: #58a6ff;
+            --red: #f85149;
+            --yellow: #d29922;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Top contact banner */
+        .top-banner {
+            background: linear-gradient(90deg, rgba(0, 210, 106, 0.06) 0%, rgba(0, 210, 106, 0.12) 50%, rgba(0, 210, 106, 0.06) 100%);
+            border-bottom: 1px solid rgba(0, 210, 106, 0.1);
+            text-align: center;
+            padding: 11px 24px;
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--text-dim);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        .top-banner-icon {
+            font-size: 15px;
+            line-height: 1;
+        }
+        .top-banner a {
+            color: var(--green);
+            text-decoration: none;
+            font-weight: 700;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 13px;
+            letter-spacing: 0.2px;
+            transition: color 0.2s;
+        }
+        .top-banner a:hover { color: #2bea84; }
+
+        /* Nav */
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 24px 24px;
+        }
+        .nav-logo {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 22px;
+            font-weight: 700;
+            text-decoration: none;
+        }
+        .nav-logo .bettr { color: var(--text); }
+        .nav-logo .bot { color: var(--green); }
+        .nav-logo .dot-com { color: var(--text-dim); font-size: 14px; font-weight: 500; }
+        .nav-back {
+            color: var(--text-dim);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        .nav-back:hover { color: var(--text); }
+
+        /* Hero */
+        .hero {
+            text-align: center;
+            padding: 60px 24px 40px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .hero-badge {
+            display: inline-block;
+            padding: 6px 16px;
+            background: var(--green-dim);
+            border: 1px solid rgba(0, 210, 106, 0.2);
+            border-radius: 100px;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--green);
+            margin-bottom: 20px;
+        }
+        .hero h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 40px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            letter-spacing: -0.5px;
+        }
+        .hero p {
+            color: var(--text-dim);
+            font-size: 16px;
+            max-width: 540px;
+            margin: 0 auto;
+        }
+
+        /* Video */
+        .video-section {
+            max-width: 700px;
+            margin: 0 auto 40px;
+            padding: 0 24px;
+        }
+        .video-container {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            overflow: hidden;
+        }
+        .video-container video {
+            width: 100%;
+            display: block;
+        }
+
+        /* Steps */
+        .steps {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 0 24px 60px;
+        }
+        .step {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 32px;
+            margin-bottom: 20px;
+            position: relative;
+        }
+        .step-number {
+            position: absolute;
+            top: -14px;
+            left: 28px;
+            background: var(--green);
+            color: #000;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .step h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+        .step p {
+            color: var(--text-dim);
+            font-size: 14px;
+            line-height: 1.7;
+            margin-bottom: 8px;
+        }
+        .step p:last-child { margin-bottom: 0; }
+
+        .step-code {
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 12px 16px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            color: var(--green);
+            margin: 12px 0;
+            word-break: break-all;
+            user-select: all;
+        }
+
+        .step-note {
+            background: rgba(88, 166, 255, 0.08);
+            border: 1px solid rgba(88, 166, 255, 0.15);
+            border-radius: 8px;
+            padding: 12px 16px;
+            font-size: 13px;
+            color: var(--blue);
+            margin-top: 16px;
+        }
+
+        .step-warning {
+            background: rgba(248, 81, 73, 0.08);
+            border: 1px solid rgba(248, 81, 73, 0.15);
+            border-radius: 8px;
+            padding: 12px 16px;
+            font-size: 13px;
+            color: var(--red);
+            margin-top: 16px;
+        }
+
+        kbd {
+            display: inline-block;
+            padding: 2px 8px;
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            color: var(--text);
+        }
+
+        strong { color: var(--text); }
+
+        .step-img {
+            width: 100%;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            margin: 16px 0 8px;
+        }
+
+        /* Connector line between steps */
+        .step-connector {
+            width: 2px;
+            height: 20px;
+            background: var(--border);
+            margin: 0 auto;
+        }
+
+        /* FAQ */
+        .faq-section {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 0 24px 80px;
+        }
+        .faq-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 26px;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 32px;
+            letter-spacing: -0.3px;
+        }
+        .faq-item {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            margin-bottom: 12px;
+            overflow: hidden;
+            transition: border-color 0.2s;
+        }
+        .faq-item:hover { border-color: #333; }
+        .faq-question {
+            padding: 20px 24px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 15px;
+            font-weight: 600;
+            user-select: none;
+        }
+        .faq-question:hover { color: var(--green); }
+        .faq-chevron {
+            font-size: 18px;
+            color: var(--text-dim);
+            transition: transform 0.25s ease;
+            flex-shrink: 0;
+            margin-left: 16px;
+        }
+        .faq-item.open .faq-chevron {
+            transform: rotate(180deg);
+        }
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+        }
+        .faq-item.open .faq-answer {
+            max-height: 300px;
+        }
+        .faq-answer-inner {
+            padding: 0 24px 20px;
+            color: var(--text-dim);
+            font-size: 14px;
+            line-height: 1.7;
+        }
+
+        /* Support */
+        .support {
+            text-align: center;
+            padding: 40px 24px 60px;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        .support p {
+            color: var(--text-dim);
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+        .support a {
+            color: var(--green);
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .support a:hover { text-decoration: underline; }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 24px;
+            border-top: 1px solid var(--border);
+            color: var(--text-dim);
+            font-size: 12px;
+        }
+
+        @media (max-width: 600px) {
+            .hero h1 { font-size: 28px; }
+            .step { padding: 24px; }
+            .faq-question { font-size: 14px; padding: 16px 20px; }
+            .faq-answer-inner { padding: 0 20px 16px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="top-banner">
+        <span class="top-banner-icon">💬</span>
+        Still have questions? Text us anytime
+        <a href="sms:+12243044728">(224) 304-4728</a>
+    </div>
+
+    <nav class="nav">
+        <a href="/" class="nav-logo">
+            <span class="bettr">Bettr</span><span class="bot">Bot</span><span class="dot-com">.com</span>
+        </a>
+        <a href="/" class="nav-back">← Back to Home</a>
+    </nav>
+
+    <div class="hero">
+        <div class="hero-badge">ClubsPoker Setup</div>
+        <h1>How to Connect</h1>
+        <p>Follow these steps to grab your Session ID from ClubsPoker and connect to BettrBot.</p>
+    </div>
+
+    <div class="video-section">
+        <div class="video-container">
+            <video controls playsinline>
+                <source src="clubspoker-setup-video.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+    </div>
+
+    <div class="steps">
+
+        <div class="step">
+            <div class="step-number">1</div>
+            <h3>Open ClubsPoker and Log In</h3>
+            <p>Go to <strong>clubspoker.com</strong> in your browser and log into your account.</p>
+        </div>
+
+        <div class="step-connector"></div>
+
+        <div class="step">
+            <div class="step-number">2</div>
+            <h3>Open Developer Tools</h3>
+            <p>Press <kbd>F12</kbd> on your keyboard (or <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>I</kbd> on Windows, <kbd>Cmd</kbd> + <kbd>Option</kbd> + <kbd>I</kbd> on Mac) to open DevTools.</p>
+            <p>Click the <strong>Network</strong> tab at the top of the DevTools panel, then click <strong>Fetch/XHR</strong> to filter the requests.</p>
+        </div>
+
+        <div class="step-connector"></div>
+
+        <div class="step">
+            <div class="step-number">3</div>
+            <h3>Open Blackjack</h3>
+            <p>Find and open <strong>Blackjack</strong> in the ClubsPoker game lobby. The game tile looks like this:</p>
+            <div style="display:flex;justify-content:center;margin:12px 0;"><img src="data:image/jpeg;base64,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" alt="ClubsPoker Blackjack game tile" style="max-width:225px;border-radius:8px;border:1px solid var(--border);"></div>
+            <p>Wait for it to fully load — the requests we need will appear in the Network tab as soon as the game loads.</p>
+        </div>
+
+        <div class="step-connector"></div>
+
+        <div class="step">
+            <div class="step-number">4</div>
+            <h3>Find the Session ID</h3>
+            <p>In the <strong>Network</strong> tab, look for a request named <strong>blackjack_server.php</strong>.</p>
+            <p>Click on that request, then go to the <strong>Payload</strong> tab (or <strong>Request</strong> tab depending on your browser). Find the line labeled <strong>session_id</strong> — the value will look like:</p>
+            <div class="step-code">gth_7635365546318808220</div>
+            <p>Copy the entire value — that's your Session ID.</p>
+        </div>
+
+        <div class="step-connector"></div>
+
+        <div class="step">
+            <div class="step-number">5</div>
+            <h3>Paste into BettrBot</h3>
+            <p>Open BettrBot, select <strong>ClubsPoker</strong>, paste the Session ID into the <strong>Session ID</strong> field, and click <strong>Connect</strong>.</p>
+            <p>Your balance will load and you're ready to play!</p>
+        </div>
+
+    </div>
+
+    <div class="faq-section">
+        <h2 class="faq-title">Frequently Asked Questions</h2>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFaq(this)">
+                Where exactly do I find the Session ID in DevTools?
+                <span class="faq-chevron">▾</span>
+            </div>
+            <div class="faq-answer">
+                <div class="faq-answer-inner">
+                    Click the <strong>blackjack_server.php</strong> request in the Network tab, then look for the <strong>Payload</strong> tab. The form data will list several fields including <strong>session_id</strong>, <strong>game_id</strong>, and <strong>username</strong>. Copy the value of <strong>session_id</strong> only — it always starts with <code>gth_</code> followed by digits.
+                </div>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFaq(this)">
+                My session stopped working — what do I do?
+                <span class="faq-chevron">▾</span>
+            </div>
+            <div class="faq-answer">
+                <div class="faq-answer-inner">
+                    ClubsPoker sessions expire after a period of inactivity. When this happens, click <strong>Clear Session</strong> in BettrBot, then repeat the steps above to grab a fresh Session ID from a new browser session.
+                </div>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFaq(this)">
+                I don't see any requests in the Network tab
+                <span class="faq-chevron">▾</span>
+            </div>
+            <div class="faq-answer">
+                <div class="faq-answer-inner">
+                    Make sure you have the <strong>Network</strong> tab open and <strong>Fetch/XHR</strong> selected <em>before</em> you open the blackjack game. The requests only appear while DevTools is recording. If it's still empty, try closing and reopening the game with DevTools open.
+                </div>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFaq(this)">
+                Which request should I click on?
+                <span class="faq-chevron">▾</span>
+            </div>
+            <div class="faq-answer">
+                <div class="faq-answer-inner">
+                    Look for any request named <strong>blackjack_server.php</strong> at <strong>games-dcw.netgaming.com</strong> — that's the NetGaming engine ClubsPoker uses for blackjack. Any request to that endpoint will have the Session ID in its payload.
+                </div>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFaq(this)">
+                Do I need to play in SC or GC mode?
+                <span class="faq-chevron">▾</span>
+            </div>
+            <div class="faq-answer">
+                <div class="faq-answer-inner">
+                    BettrBot plays in <strong>Sweepstakes Coins (SC)</strong> mode on ClubsPoker. Make sure you're playing in SC mode when you capture your Session ID — the session is mode-specific, so a GC session won't work for SC play.
+                </div>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFaq(this)">
+                Can I keep playing in the browser while BettrBot is running?
+                <span class="faq-chevron">▾</span>
+            </div>
+            <div class="faq-answer">
+                <div class="faq-answer-inner">
+                    No — do not play in the browser at the same time as BettrBot. This can cause conflicts and errors. Close the game in your browser once BettrBot is connected and running.
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="support">
+        <p>Need help? Text us anytime.</p>
+        <a href="sms:+12243044728">(224) 304-4728</a>
+    </div>
+
+    <div class="footer">
+        © 2026 BettrBot. For entertainment purposes only.
+    </div>
+
+    <script>
+        function toggleFaq(el) {
+            const item = el.parentElement;
+            // Close all other open items
+            document.querySelectorAll('.faq-item.open').forEach(openItem => {
+                if (openItem !== item) openItem.classList.remove('open');
+            });
+            item.classList.toggle('open');
+        }
+    </script>
+
+</body>
+</html>
