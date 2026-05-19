@@ -171,6 +171,45 @@
       max-width: 600px;
       margin: 0 auto 48px;
     }
+
+    /* Section divider between BettrBot and BettrBot Live in the hero.
+       Text logo mirrors the BBL login screen exactly:
+         "Bettr" — white,  "Bot" — green,  " Live" — dim. */
+    .hero-product-divider {
+      margin: 64px auto 24px;
+      max-width: 800px;
+      border-top: 1px solid var(--border, #1f2933);
+      padding-top: 48px;
+      text-align: center;
+    }
+    /* The first product block sits directly under the hero subtitle —
+       no border-top needed since there's nothing above to separate from. */
+    .hero-product-divider--first {
+      margin-top: 24px;
+      padding-top: 0;
+      border-top: none;
+    }
+    .hero-product-logo-text {
+      font-size: 48px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin: 0 auto 16px;
+      line-height: 1;
+    }
+    .hero-product-logo-text .bettr { color: var(--text, #ffffff); }
+    .hero-product-logo-text .bot   { color: var(--green, #3fb950); }
+    .hero-product-logo-text .dot-com {
+      color: var(--text-dim, #8b949e);
+      font-size: 28px;
+      font-weight: 500;
+    }
+    .hero-product-scarcity {
+      font-size: 14px;
+      color: var(--green, #3fb950);
+      margin: 0 auto 32px;
+      max-width: 460px;
+      opacity: 0.9;
+    }
     
     .hero-buttons {
       display: flex;
@@ -887,6 +926,102 @@
     <section class="hero">
       <h1>Perfect Strategy.<br>Every Hand.</h1>
       <p class="hero-subtitle">Never second-guess a blackjack decision again. BettrBot gives you real-time, mathematically perfect strategy guidance—hit, stand, double, and split—so you always make the optimal play.</p>
+
+      <!-- ====== BettrBot Live (top product) ====== -->
+      <!-- Single-tier access, Windows + macOS download. Checkout link
+           left blank until the Whop product is set up. -->
+      <div class="hero-product-divider hero-product-divider--first">
+        <div class="hero-product-logo-text">
+          <span class="bettr">Bettr</span><span class="bot">Bot</span><span class="dot-com">&nbsp;Live</span>
+        </div>
+        <p class="hero-product-scarcity"><em>*Memberships will be limited to prevent oversaturation*</em></p>
+      </div>
+
+      <div class="hero-buttons">
+        <a href="" class="btn btn-primary">
+          Live Access <span class="price-tag">$95/mo</span>
+        </a>
+      </div>
+
+      <div class="hero-downloads">
+        <span class="download-label">Download Now:</span>
+        <a href="https://github.com/rileydravy/Bettrbot-live-release/releases/download/v1.0.5/BettrBotLive-Setup-1.0.5.exe" class="hero-download-btn">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M0 3.449L9.75 2.1v9.451H0m10.949-9.602L24 0v11.4H10.949M0 12.6h9.75v9.451L0 20.699M10.949 12.6H24V24l-12.9-1.801"/>
+          </svg>
+          Windows
+        </a>
+        <a href="https://github.com/rileydravy/Bettrbot-live-release/releases/download/v1.0.5/BettrBotLive-1.0.5-arm64.dmg" class="hero-download-btn">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+          </svg>
+          macOS
+        </a>
+        <span class="download-divider">·</span>
+        <button class="how-to-dl-link" id="howToDownloadBtnLive">How to Download</button>
+      </div>
+
+      <div class="hero-casinos">
+        <span class="hero-casinos-label">BettrBot Live Supported Sites</span>
+        <div class="hero-casinos-grid">
+          <div class="casino-item">
+            <div class="casino-circle">
+              <img src="mcluck.png" alt="McLuck logo">
+            </div>
+            <span class="casino-name">McLuck</span>
+          </div>
+          <div class="casino-item">
+            <div class="casino-circle">
+              <img src="hellomillions.png" alt="Hello Millions logo">
+            </div>
+            <span class="casino-name">Hello Millions</span>
+          </div>
+          <div class="casino-item">
+            <div class="casino-circle">
+              <img src="spinpals.png" alt="SpinPals logo">
+            </div>
+            <span class="casino-name">SpinPals</span>
+          </div>
+          <div class="casino-item">
+            <div class="casino-circle">
+              <img src="spinquest.png" alt="SpinQuest logo">
+            </div>
+            <span class="casino-name">SpinQuest</span>
+          </div>
+          <div class="casino-item">
+            <div class="casino-circle">
+              <img src="jackpota.png" alt="Jackpota logo">
+            </div>
+            <span class="casino-name">Jackpota</span>
+          </div>
+          <div class="casino-item">
+            <div class="casino-circle">
+              <img src="playfame.png" alt="PlayFame logo">
+            </div>
+            <span class="casino-name">PlayFame</span>
+          </div>
+          <div class="casino-item">
+            <div class="casino-circle">
+              <img src="megabonanza.png" alt="MegaBonanza logo">
+            </div>
+            <span class="casino-name">MegaBonanza</span>
+          </div>
+          <div class="casino-item">
+            <div class="casino-circle">
+              <img src="spinblitz.png" alt="SpinBlitz logo">
+            </div>
+            <span class="casino-name">SpinBlitz</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ====== BettrBot (original product) ====== -->
+      <div class="hero-product-divider">
+        <div class="hero-product-logo-text">
+          <span class="bettr">Bettr</span><span class="bot">Bot</span>
+        </div>
+      </div>
+
       <div class="hero-buttons">
         <a href="https://whop.com/bettrbot/basic-access-89-ecc5/" target="_blank" class="btn btn-primary">
           Basic Access <span class="price-tag">$35/mo</span>
@@ -895,7 +1030,7 @@
           Full Suite <span class="price-tag">$65/mo</span>
         </a>
       </div>
-      
+
       <div class="hero-downloads">
         <span class="download-label">Download Now:</span>
         <a href="https://github.com/rileydravy/bettrbot-releases/releases/download/v3.0.0/BettrBot-Setup-3.0.0.exe" class="hero-download-btn">
@@ -915,7 +1050,7 @@
       </div>
 
       <div class="hero-casinos">
-        <span class="hero-casinos-label">Supported Sites</span>
+        <span class="hero-casinos-label">BettrBot Supported Sites</span>
         <div class="hero-casinos-grid">
           <div class="casino-item">
             <div class="casino-circle">
@@ -1127,15 +1262,18 @@
     // Modal functionality
     const modal = document.getElementById('downloadModal');
     const openBtn = document.getElementById('howToDownloadBtn');
+    const openBtnLive = document.getElementById('howToDownloadBtnLive');
     const closeBtn = document.getElementById('modalClose');
     const tabs = document.querySelectorAll('.modal-tab');
     const panels = document.querySelectorAll('.tab-panel');
 
-    // Open modal
-    openBtn.addEventListener('click', () => {
+    // Open modal — wired to both BettrBot and BettrBot Live trigger buttons
+    function openDownloadModal() {
       modal.classList.add('active');
       document.body.style.overflow = 'hidden';
-    });
+    }
+    openBtn.addEventListener('click', openDownloadModal);
+    if (openBtnLive) openBtnLive.addEventListener('click', openDownloadModal);
 
     // Close modal
     closeBtn.addEventListener('click', () => {
