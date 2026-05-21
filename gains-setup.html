@@ -21,7 +21,6 @@
             --green-dim: rgba(0, 210, 106, 0.1);
             --blue: #58a6ff;
             --red: #f85149;
-            --yellow: #d29922;
         }
 
         body {
@@ -31,35 +30,6 @@
             line-height: 1.6;
             -webkit-font-smoothing: antialiased;
         }
-
-        /* Top contact banner */
-        .top-banner {
-            background: linear-gradient(90deg, rgba(0, 210, 106, 0.06) 0%, rgba(0, 210, 106, 0.12) 50%, rgba(0, 210, 106, 0.06) 100%);
-            border-bottom: 1px solid rgba(0, 210, 106, 0.1);
-            text-align: center;
-            padding: 11px 24px;
-            font-size: 13px;
-            font-weight: 500;
-            color: var(--text-dim);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-        }
-        .top-banner-icon {
-            font-size: 15px;
-            line-height: 1;
-        }
-        .top-banner a {
-            color: var(--green);
-            text-decoration: none;
-            font-weight: 700;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 13px;
-            letter-spacing: 0.2px;
-            transition: color 0.2s;
-        }
-        .top-banner a:hover { color: #2bea84; }
 
         /* Nav */
         .nav {
@@ -116,7 +86,7 @@
         .hero p {
             color: var(--text-dim);
             font-size: 16px;
-            max-width: 540px;
+            max-width: 500px;
             margin: 0 auto;
         }
 
@@ -141,7 +111,7 @@
         .steps {
             max-width: 700px;
             margin: 0 auto;
-            padding: 0 24px 60px;
+            padding: 0 24px 80px;
         }
         .step {
             background: var(--bg-card);
@@ -242,66 +212,6 @@
             margin: 0 auto;
         }
 
-        /* FAQ */
-        .faq-section {
-            max-width: 700px;
-            margin: 0 auto;
-            padding: 0 24px 80px;
-        }
-        .faq-title {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 26px;
-            font-weight: 700;
-            text-align: center;
-            margin-bottom: 32px;
-            letter-spacing: -0.3px;
-        }
-        .faq-item {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            margin-bottom: 12px;
-            overflow: hidden;
-            transition: border-color 0.2s;
-        }
-        .faq-item:hover { border-color: #333; }
-        .faq-question {
-            padding: 20px 24px;
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 15px;
-            font-weight: 600;
-            user-select: none;
-        }
-        .faq-question:hover { color: var(--green); }
-        .faq-chevron {
-            font-size: 18px;
-            color: var(--text-dim);
-            transition: transform 0.25s ease;
-            flex-shrink: 0;
-            margin-left: 16px;
-        }
-        .faq-item.open .faq-chevron {
-            transform: rotate(180deg);
-        }
-        .faq-answer {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease, padding 0.3s ease;
-        }
-        .faq-item.open .faq-answer {
-            max-height: 300px;
-        }
-        .faq-answer-inner {
-            padding: 0 24px 20px;
-            color: var(--text-dim);
-            font-size: 14px;
-            line-height: 1.7;
-        }
-
         /* Support */
         .support {
             text-align: center;
@@ -333,18 +243,10 @@
         @media (max-width: 600px) {
             .hero h1 { font-size: 28px; }
             .step { padding: 24px; }
-            .faq-question { font-size: 14px; padding: 16px 20px; }
-            .faq-answer-inner { padding: 0 20px 16px; }
         }
     </style>
 </head>
 <body>
-
-    <div class="top-banner">
-        <span class="top-banner-icon">💬</span>
-        Still have questions? Text us anytime
-        <a href="sms:+12243044728">(224) 304-4728</a>
-    </div>
 
     <nav class="nav">
         <a href="/" class="nav-logo">
@@ -356,7 +258,7 @@
     <div class="hero">
         <div class="hero-badge">Gains Setup</div>
         <h1>How to Connect</h1>
-        <p>Follow these steps to get your Bearer token from Gains and connect it to BettrBot.</p>
+        <p>Follow these steps to connect Gains to BettrBot and start playing.</p>
     </div>
 
     <div class="video-section">
@@ -372,17 +274,16 @@
 
         <div class="step">
             <div class="step-number">1</div>
-            <h3>Log into Gains</h3>
-            <p>Go to <strong>gains.com</strong> in your browser and log into your account.</p>
+            <h3>Pick Your Browser and Click Connect</h3>
+            <p>Open BettrBot, select <strong>Gains</strong> from the site picker. Choose your preferred browser (<strong>Chrome</strong>, <strong>Edge</strong>, or <strong>Brave</strong>) from the dropdown, then click <strong>Connect</strong>. The selected browser will launch automatically.</p>
         </div>
 
         <div class="step-connector"></div>
 
         <div class="step">
             <div class="step-number">2</div>
-            <h3>Open Developer Tools</h3>
-            <p>Press <kbd>F12</kbd> on your keyboard (or <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>I</kbd> on Windows, <kbd>Cmd</kbd> + <kbd>Option</kbd> + <kbd>I</kbd> on Mac) to open DevTools.</p>
-            <p>Click the <strong>Network</strong> tab at the top of the DevTools panel.</p>
+            <h3>Sign Into Your Gains Account</h3>
+            <p>In the browser window that opened, log into your <strong>Gains</strong> account with your normal email and password.</p>
         </div>
 
         <div class="step-connector"></div>
@@ -390,80 +291,16 @@
         <div class="step">
             <div class="step-number">3</div>
             <h3>Open Blackjack</h3>
-            <p>Navigate to and open <strong>Blackjack</strong>. Wait for it to fully load.</p>
+            <p>Navigate to <strong>Games</strong> and find <strong>Blackjack</strong>. Open the game — BettrBot will auto-connect as soon as the table loads.</p>
+            <div class="step-warning">⚠️ You must leave the browser window open while the bot is running. Closing it will disconnect the session.</div>
         </div>
 
         <div class="step-connector"></div>
 
         <div class="step">
             <div class="step-number">4</div>
-            <h3>Find the Bearer Token</h3>
-            <p>In the <strong>Network</strong> tab, click on <strong>Fetch/XHR</strong> to filter the requests. Look for a request called <strong>active-game</strong>.</p>
-            <p>Click on it, then go to the <strong>Headers</strong> tab. Scroll down to <strong>Request Headers</strong> and find:</p>
-            <div class="step-code">authorization: Bearer eyJhbGciOiJSUzI1NiIs...</div>
-            <p>Copy everything <strong>after</strong> "Bearer " — that entire long string is your token.</p>
-        </div>
-
-        <div class="step-connector"></div>
-
-        <div class="step">
-            <div class="step-number">5</div>
-            <h3>Paste into BettrBot</h3>
-            <p>Open BettrBot, select <strong>Gains</strong>, and click <strong>Manual Setup</strong>. Paste the Bearer token into the <strong>Bearer Token</strong> field and click <strong>Connect</strong>.</p>
-            <p>You're ready to play!</p>
-        </div>
-
-    </div>
-
-    <div class="faq-section">
-        <h2 class="faq-title">Frequently Asked Questions</h2>
-
-        <div class="faq-item">
-            <div class="faq-question" onclick="toggleFaq(this)">
-                I don't see the active-game request in the Network tab
-                <span class="faq-chevron">▾</span>
-            </div>
-            <div class="faq-answer">
-                <div class="faq-answer-inner">
-                    Make sure you have DevTools open with the <strong>Network</strong> tab and <strong>Fetch/XHR</strong> selected <em>before</em> you open Blackjack. The request fires when the game loads, so DevTools needs to be recording first. If you missed it, refresh the page.
-                </div>
-            </div>
-        </div>
-
-        <div class="faq-item">
-            <div class="faq-question" onclick="toggleFaq(this)">
-                My token stopped working — what do I do?
-                <span class="faq-chevron">▾</span>
-            </div>
-            <div class="faq-answer">
-                <div class="faq-answer-inner">
-                    Gains tokens expire after a period of time. When this happens, click <strong>Clear Session</strong> in BettrBot, then repeat the steps above to grab a fresh Bearer token from a new active-game request.
-                </div>
-            </div>
-        </div>
-
-        <div class="faq-item">
-            <div class="faq-question" onclick="toggleFaq(this)">
-                Does BettrBot work with Gold Coins or Sweepstakes Coins?
-                <span class="faq-chevron">▾</span>
-            </div>
-            <div class="faq-answer">
-                <div class="faq-answer-inner">
-                    BettrBot plays in <strong>Sweepstakes Coins (SC)</strong> mode on Gains. Make sure you're in SC mode when you open Blackjack.
-                </div>
-            </div>
-        </div>
-
-        <div class="faq-item">
-            <div class="faq-question" onclick="toggleFaq(this)">
-                Can I keep playing in the browser while BettrBot is running?
-                <span class="faq-chevron">▾</span>
-            </div>
-            <div class="faq-answer">
-                <div class="faq-answer-inner">
-                    No — do not play in the browser at the same time as BettrBot. This can cause conflicts and errors. Close the game in your browser once BettrBot is connected and running.
-                </div>
-            </div>
+            <h3>Enter Bet Size and Start</h3>
+            <p>Back in BettrBot, enter your <strong>bet size</strong> and click <strong>Start</strong>.</p>
         </div>
 
     </div>
@@ -476,16 +313,6 @@
     <div class="footer">
         © 2026 BettrBot. For entertainment purposes only.
     </div>
-
-    <script>
-        function toggleFaq(el) {
-            const item = el.parentElement;
-            document.querySelectorAll('.faq-item.open').forEach(openItem => {
-                if (openItem !== item) openItem.classList.remove('open');
-            });
-            item.classList.toggle('open');
-        }
-    </script>
 
 </body>
 </html>
