@@ -21,7 +21,6 @@
             --green-dim: rgba(0, 210, 106, 0.1);
             --blue: #58a6ff;
             --red: #f85149;
-            --yellow: #d29922;
         }
 
         body {
@@ -31,35 +30,6 @@
             line-height: 1.6;
             -webkit-font-smoothing: antialiased;
         }
-
-        /* Top contact banner */
-        .top-banner {
-            background: linear-gradient(90deg, rgba(0, 210, 106, 0.06) 0%, rgba(0, 210, 106, 0.12) 50%, rgba(0, 210, 106, 0.06) 100%);
-            border-bottom: 1px solid rgba(0, 210, 106, 0.1);
-            text-align: center;
-            padding: 11px 24px;
-            font-size: 13px;
-            font-weight: 500;
-            color: var(--text-dim);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-        }
-        .top-banner-icon {
-            font-size: 15px;
-            line-height: 1;
-        }
-        .top-banner a {
-            color: var(--green);
-            text-decoration: none;
-            font-weight: 700;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 13px;
-            letter-spacing: 0.2px;
-            transition: color 0.2s;
-        }
-        .top-banner a:hover { color: #2bea84; }
 
         /* Nav */
         .nav {
@@ -116,7 +86,7 @@
         .hero p {
             color: var(--text-dim);
             font-size: 16px;
-            max-width: 540px;
+            max-width: 500px;
             margin: 0 auto;
         }
 
@@ -141,7 +111,7 @@
         .steps {
             max-width: 700px;
             margin: 0 auto;
-            padding: 0 24px 60px;
+            padding: 0 24px 80px;
         }
         .step {
             background: var(--bg-card);
@@ -242,66 +212,6 @@
             margin: 0 auto;
         }
 
-        /* FAQ */
-        .faq-section {
-            max-width: 700px;
-            margin: 0 auto;
-            padding: 0 24px 80px;
-        }
-        .faq-title {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 26px;
-            font-weight: 700;
-            text-align: center;
-            margin-bottom: 32px;
-            letter-spacing: -0.3px;
-        }
-        .faq-item {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            margin-bottom: 12px;
-            overflow: hidden;
-            transition: border-color 0.2s;
-        }
-        .faq-item:hover { border-color: #333; }
-        .faq-question {
-            padding: 20px 24px;
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 15px;
-            font-weight: 600;
-            user-select: none;
-        }
-        .faq-question:hover { color: var(--green); }
-        .faq-chevron {
-            font-size: 18px;
-            color: var(--text-dim);
-            transition: transform 0.25s ease;
-            flex-shrink: 0;
-            margin-left: 16px;
-        }
-        .faq-item.open .faq-chevron {
-            transform: rotate(180deg);
-        }
-        .faq-answer {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease, padding 0.3s ease;
-        }
-        .faq-item.open .faq-answer {
-            max-height: 300px;
-        }
-        .faq-answer-inner {
-            padding: 0 24px 20px;
-            color: var(--text-dim);
-            font-size: 14px;
-            line-height: 1.7;
-        }
-
         /* Support */
         .support {
             text-align: center;
@@ -333,18 +243,10 @@
         @media (max-width: 600px) {
             .hero h1 { font-size: 28px; }
             .step { padding: 24px; }
-            .faq-question { font-size: 14px; padding: 16px 20px; }
-            .faq-answer-inner { padding: 0 20px 16px; }
         }
     </style>
 </head>
 <body>
-
-    <div class="top-banner">
-        <span class="top-banner-icon">💬</span>
-        Still have questions? Text us anytime
-        <a href="sms:+12243044728">(224) 304-4728</a>
-    </div>
 
     <nav class="nav">
         <a href="/" class="nav-logo">
@@ -356,13 +258,13 @@
     <div class="hero">
         <div class="hero-badge">ClubsPoker Setup</div>
         <h1>How to Connect</h1>
-        <p>Follow these steps to grab your Session ID from ClubsPoker and connect to BettrBot.</p>
+        <p>ClubsPoker connects automatically — no tokens to copy. Just pick your browser, log in, and BettrBot captures the session for you.</p>
     </div>
 
     <div class="video-section">
         <div class="video-container">
             <video controls playsinline>
-                <source src="clubspoker-setup-video.mp4" type="video/mp4">
+                <source src="clubspoker-setup-tutorial.mp4" type="video/mp4">
                 Your browser does not support the video tag.
             </video>
         </div>
@@ -372,124 +274,50 @@
 
         <div class="step">
             <div class="step-number">1</div>
-            <h3>Open ClubsPoker and Log In</h3>
-            <p>Go to <strong>clubspoker.com</strong> in your browser and log into your account.</p>
+            <h3>Select the ClubsPoker Account</h3>
+            <p>Open BettrBot and pick <strong>ClubsPoker</strong> from the account picker. You'll see a <strong>Browser</strong> dropdown in the connection panel.</p>
         </div>
 
         <div class="step-connector"></div>
 
         <div class="step">
             <div class="step-number">2</div>
-            <h3>Open Developer Tools</h3>
-            <p>Press <kbd>F12</kbd> on your keyboard (or <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>I</kbd> on Windows, <kbd>Cmd</kbd> + <kbd>Option</kbd> + <kbd>I</kbd> on Mac) to open DevTools.</p>
-            <p>Click the <strong>Network</strong> tab at the top of the DevTools panel, then click <strong>Fetch/XHR</strong> to filter the requests.</p>
+            <h3>Choose Your Browser</h3>
+            <p>From the <strong>Browser</strong> dropdown, pick the browser you normally use — <strong>Chrome</strong>, <strong>Edge</strong>, or <strong>Brave</strong>.</p>
         </div>
 
         <div class="step-connector"></div>
 
         <div class="step">
             <div class="step-number">3</div>
-            <h3>Open Blackjack</h3>
-            <p>Find and open <strong>Blackjack</strong> in the ClubsPoker game lobby. The game tile looks like this:</p>
-            <div style="display:flex;justify-content:center;margin:12px 0;"><img src="data:image/jpeg;base64,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" alt="ClubsPoker Blackjack game tile" style="max-width:225px;border-radius:8px;border:1px solid var(--border);"></div>
-            <p>Wait for it to fully load — the requests we need will appear in the Network tab as soon as the game loads.</p>
+            <h3>Click Connect</h3>
+            <p>Press <strong>Connect</strong>. A real browser window opens and loads <strong>ClubsPoker.com</strong>. Leave this window open.</p>
         </div>
 
         <div class="step-connector"></div>
 
         <div class="step">
             <div class="step-number">4</div>
-            <h3>Find the Session ID</h3>
-            <p>In the <strong>Network</strong> tab, look for a request named <strong>blackjack_server.php</strong>.</p>
-            <p>Click on that request, then go to the <strong>Payload</strong> tab (or <strong>Request</strong> tab depending on your browser). Find the line labeled <strong>session_id</strong> — the value will look like:</p>
-            <div class="step-code">gth_7635365546318808220</div>
-            <p>Copy the entire value — that's your Session ID.</p>
+            <h3>Log In to ClubsPoker</h3>
+            <p>If you're not already signed in, log into your <strong>ClubsPoker</strong> account in that window like you normally would.</p>
         </div>
 
         <div class="step-connector"></div>
 
         <div class="step">
             <div class="step-number">5</div>
-            <h3>Paste into BettrBot</h3>
-            <p>Open BettrBot, select <strong>ClubsPoker</strong>, paste the Session ID into the <strong>Session ID</strong> field, and click <strong>Connect</strong>.</p>
-            <p>Your balance will load and you're ready to play!</p>
+            <h3>Open Blackjack &amp; Place One Bet</h3>
+            <p>Open the <strong>Blackjack</strong> game &mdash; it looks like this:</p>
+            <img class="step-img" src="data:image/jpeg;base64,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" alt="ClubsPoker Blackjack game" style="max-width:220px;display:block;margin:14px auto;">
+            <p>Place <strong>one bet</strong> so a hand is dealt. BettrBot captures your session the moment the hand starts.</p>
         </div>
 
-    </div>
+        <div class="step-connector"></div>
 
-    <div class="faq-section">
-        <h2 class="faq-title">Frequently Asked Questions</h2>
-
-        <div class="faq-item">
-            <div class="faq-question" onclick="toggleFaq(this)">
-                Where exactly do I find the Session ID in DevTools?
-                <span class="faq-chevron">▾</span>
-            </div>
-            <div class="faq-answer">
-                <div class="faq-answer-inner">
-                    Click the <strong>blackjack_server.php</strong> request in the Network tab, then look for the <strong>Payload</strong> tab. The form data will list several fields including <strong>session_id</strong>, <strong>game_id</strong>, and <strong>username</strong>. Copy the value of <strong>session_id</strong> only — it always starts with <code>gth_</code> followed by digits.
-                </div>
-            </div>
-        </div>
-
-        <div class="faq-item">
-            <div class="faq-question" onclick="toggleFaq(this)">
-                My session stopped working — what do I do?
-                <span class="faq-chevron">▾</span>
-            </div>
-            <div class="faq-answer">
-                <div class="faq-answer-inner">
-                    ClubsPoker sessions expire after a period of inactivity. When this happens, click <strong>Clear Session</strong> in BettrBot, then repeat the steps above to grab a fresh Session ID from a new browser session.
-                </div>
-            </div>
-        </div>
-
-        <div class="faq-item">
-            <div class="faq-question" onclick="toggleFaq(this)">
-                I don't see any requests in the Network tab
-                <span class="faq-chevron">▾</span>
-            </div>
-            <div class="faq-answer">
-                <div class="faq-answer-inner">
-                    Make sure you have the <strong>Network</strong> tab open and <strong>Fetch/XHR</strong> selected <em>before</em> you open the blackjack game. The requests only appear while DevTools is recording. If it's still empty, try closing and reopening the game with DevTools open.
-                </div>
-            </div>
-        </div>
-
-        <div class="faq-item">
-            <div class="faq-question" onclick="toggleFaq(this)">
-                Which request should I click on?
-                <span class="faq-chevron">▾</span>
-            </div>
-            <div class="faq-answer">
-                <div class="faq-answer-inner">
-                    Look for any request named <strong>blackjack_server.php</strong> at <strong>games-dcw.netgaming.com</strong> — that's the NetGaming engine ClubsPoker uses for blackjack. Any request to that endpoint will have the Session ID in its payload.
-                </div>
-            </div>
-        </div>
-
-        <div class="faq-item">
-            <div class="faq-question" onclick="toggleFaq(this)">
-                Do I need to play in SC or GC mode?
-                <span class="faq-chevron">▾</span>
-            </div>
-            <div class="faq-answer">
-                <div class="faq-answer-inner">
-                    BettrBot plays in <strong>Sweepstakes Coins (SC)</strong> mode on ClubsPoker. Make sure you're playing in SC mode when you capture your Session ID — the session is mode-specific, so a GC session won't work for SC play.
-                </div>
-            </div>
-        </div>
-
-        <div class="faq-item">
-            <div class="faq-question" onclick="toggleFaq(this)">
-                Can I keep playing in the browser while BettrBot is running?
-                <span class="faq-chevron">▾</span>
-            </div>
-            <div class="faq-answer">
-                <div class="faq-answer-inner">
-                    No — do not play in the browser at the same time as BettrBot. This can cause conflicts and errors. Close the game in your browser once BettrBot is connected and running.
-                </div>
-            </div>
+        <div class="step">
+            <div class="step-number">6</div>
+            <h3>Start Playing</h3>
+            <p>Switch back to BettrBot — the status will show <strong>Connected</strong> and your balance will appear. Set your bet and click <strong>Start</strong>.</p>
         </div>
 
     </div>
@@ -502,17 +330,6 @@
     <div class="footer">
         © 2026 BettrBot. For entertainment purposes only.
     </div>
-
-    <script>
-        function toggleFaq(el) {
-            const item = el.parentElement;
-            // Close all other open items
-            document.querySelectorAll('.faq-item.open').forEach(openItem => {
-                if (openItem !== item) openItem.classList.remove('open');
-            });
-            item.classList.toggle('open');
-        }
-    </script>
 
 </body>
 </html>
