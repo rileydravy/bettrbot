@@ -297,7 +297,7 @@
     <div class="hero">
         <div class="hero-badge">Lonestar Setup</div>
         <h1>How to Connect</h1>
-        <p>Follow these steps to get your Bearer token and Account ID from Lonestar and connect to BettrBot.</p>
+        <p>Follow these steps to connect BettrBot to Lonestar's Instant Blackjack. No DevTools and nothing to copy &mdash; BettrBot opens a secure browser window and detects your session automatically.</p>
     </div>
 
     <div class="video-section">
@@ -313,53 +313,43 @@
 
         <div class="step">
             <div class="step-number">1</div>
-            <h3>Open Lonestar and Log In</h3>
-            <p>Go to <strong>lonestarcasino.com</strong> in your browser and log into your account.</p>
+            <h3>Open BettrBot and Select Lonestar</h3>
+            <p>Launch <strong>BettrBot</strong>, then choose <strong>Lonestar</strong> from the list of sites.</p>
         </div>
 
         <div class="step-connector"></div>
 
         <div class="step">
             <div class="step-number">2</div>
-            <h3>Open Developer Tools</h3>
-            <p>Press <kbd>F12</kbd> on your keyboard (or <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>I</kbd> on Windows, <kbd>Cmd</kbd> + <kbd>Option</kbd> + <kbd>I</kbd> on Mac) to open DevTools.</p>
-            <p>Click the <strong>Network</strong> tab at the top of the DevTools panel.</p>
+            <h3>Pick Your Browser and Click Connect</h3>
+            <p>Under <strong>Connection</strong>, use the <strong>Browser</strong> dropdown to pick the browser you normally use for Lonestar &mdash; <strong>Chrome</strong>, <strong>Edge</strong>, or <strong>Brave</strong> &mdash; then click <strong>Connect</strong>.</p>
+            <p>BettrBot opens a secure browser window pointed at <strong>lonestarcasino.com</strong>. That window is all you need &mdash; no DevTools and nothing to copy.</p>
         </div>
 
         <div class="step-connector"></div>
 
         <div class="step">
             <div class="step-number">3</div>
-            <h3>Navigate to Blackjack LuckySevens</h3>
-            <p>Open <strong>Blackjack LuckySevens</strong> in Lonestar. Wait for it to fully load.</p>
+            <h3>Log Into Lonestar</h3>
+            <p>In the window BettrBot just opened, log into your <strong>lonestarcasino.com</strong> account if you aren't already signed in.</p>
         </div>
 
         <div class="step-connector"></div>
 
         <div class="step">
             <div class="step-number">4</div>
-            <h3>Find the Blackjack Request</h3>
-            <p>In the <strong>Network</strong> tab, look for a request that starts with:</p>
-            <div class="step-code">blackjack?operator=11736</div>
-            <p>Click on that request.</p>
+            <h3>Open Instant Blackjack and Play One Hand</h3>
+            <p>Open the <strong>Instant Blackjack</strong> game, let the table finish loading, and place <strong>one hand</strong>.</p>
+            <p>That first hand lets BettrBot detect your live session &mdash; it happens automatically in the background, so there's nothing to copy or paste.</p>
         </div>
 
         <div class="step-connector"></div>
 
         <div class="step">
             <div class="step-number">5</div>
-            <h3>Copy the Payload</h3>
-            <p>Click the <strong>Payload</strong> tab and copy the data. It should look something like this:</p>
-            <div class="step-code">{"game":"table\\html5\\evoplay\\blackjack","customVars":"7b2230223a2236303535303430353637222c2231223a2230222c2232223a2231222c2273223a226636316539663732336531633462343631353835353339316665343530323630227d","time_offset":300,"action":"settings"}</div>
-        </div>
-
-        <div class="step-connector"></div>
-
-        <div class="step">
-            <div class="step-number">6</div>
-            <h3>Paste into BettrBot</h3>
-            <p>Open BettrBot, select <strong>Lonestar</strong>, and paste the copied payload into the connection field. Click <strong>Connect</strong>.</p>
-            <p>Your balance will load and you're ready to play!</p>
+            <h3>You're Connected</h3>
+            <p>BettrBot captures your session on its own &mdash; your balance loads and the status turns to <strong>Connected</strong>. Set your bet size and press <strong>Start</strong>.</p>
+            <div class="step-note">Keep the browser window BettrBot opened <strong>open</strong> while you play &mdash; it keeps your session alive. Closing it ends the session.</div>
         </div>
 
     </div>
