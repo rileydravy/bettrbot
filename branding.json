@@ -1,5 +1,5 @@
 {
-  "rileyssite.us":   { "name": "Riley's Site",                "subtitle": "", "logo": "" },
-  "rileyssitep2.us": { "name": "Riley's Site P2",             "subtitle": "", "logo": "" },
-  "rileyssitep3.us": { "name": "TESTING Name Change TESTING", "subtitle": "GreyText.com", "logo": "p3-logo.png" }
+  "rileyssite.us":   { "name": "Riley's Site",                "wompwomp.ai": "", "logo": "" },
+  "rileyssitep2.us": { "name": "Riley's Site P2",             "wompers.us": "", "logo": "" },
+  "rileyssitep3.us": { "name": "TESTING Name Change TESTING", "yeahbuddy.dev": "GreyText.com", "logo": "p3-logo.png" }
 }
