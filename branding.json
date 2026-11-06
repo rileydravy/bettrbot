@@ -1,5 +1,5 @@
 {
-  "rileyssite.us":   { "name": "Riley's Site",                "logo": "" },
-  "rileyssitep2.us": { "name": "Riley's Site P2",             "logo": "" },
+  "rileyssite.us":   { "name": "Riley's Site",                "logo": "p1-logo.png" },
+  "rileyssitep2.us": { "name": "Riley's Site P2",             "logo": "p2-logo.png" },
   "rileyssitep3.us": { "name": "TESTING Name Change TESTING", "logo": "p3-logo.png" }
 }
