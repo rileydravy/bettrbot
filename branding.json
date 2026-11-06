@@ -1,5 +1,5 @@
 {
-  "rileyssite.us":   { "name": "Bears logo Testing",                "logo": "p1-logo.png" },
-  "rileyssitep2.us": { "name": "Patriots Logo Testing",             "logo": "p2-logo.png" },
-  "rileyssitep3.us": { "name": "TESTING Name Change TESTING", "logo": "p3-logo.png" }
+  "rileyssite.us":   { "name": "Riley's Site",                "subtitle": "", "logo": "" },
+  "rileyssitep2.us": { "name": "Riley's Site P2",             "subtitle": "", "logo": "" },
+  "rileyssitep3.us": { "name": "TESTING Name Change TESTING", "subtitle": "GreyText.com", "logo": "p3-logo.png" }
 }
