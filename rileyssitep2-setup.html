@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Riley's Site P2 Setup Guide - BettrBot</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <link rel="manifest" href="site.webmanifest">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --bg: #0a0a0a;
+            --bg-card: #111111;
+            --border: #222222;
+            --text: #e6edf3;
+            --text-dim: #7d8590;
+            --green: #00d26a;
+            --green-dim: rgba(0, 210, 106, 0.1);
+            --blue: #58a6ff;
+            --red: #f85149;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Nav */
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 24px 24px;
+        }
+        .nav-logo {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 22px;
+            font-weight: 700;
+            text-decoration: none;
+        }
+        .nav-logo .bettr { color: var(--text); }
+        .nav-logo .bot { color: var(--green); }
+        .nav-logo .dot-com { color: var(--text-dim); font-size: 14px; font-weight: 500; }
+        .nav-back {
+            color: var(--text-dim);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        .nav-back:hover { color: var(--text); }
+
+        /* Hero */
+        .hero {
+            text-align: center;
+            padding: 60px 24px 40px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .hero-badge {
+            display: inline-block;
+            padding: 6px 16px;
+            background: var(--green-dim);
+            border: 1px solid rgba(0, 210, 106, 0.2);
+            border-radius: 100px;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--green);
+            margin-bottom: 20px;
+        }
+        .hero h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 40px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            letter-spacing: -0.5px;
+        }
+        .hero p {
+            color: var(--text-dim);
+            font-size: 16px;
+            max-width: 520px;
+            margin: 0 auto;
+        }
+
+        /* Video */
+        .video-section {
+            max-width: 700px;
+            margin: 0 auto 40px;
+            padding: 0 24px;
+        }
+        .video-container {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            overflow: hidden;
+        }
+        .video-container video {
+            width: 100%;
+            display: block;
+        }
+
+        /* Steps */
+        .steps {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 0 24px 80px;
+        }
+        .step {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 32px;
+            margin-bottom: 20px;
+            position: relative;
+        }
+        .step-number {
+            position: absolute;
+            top: -14px;
+            left: 28px;
+            background: var(--green);
+            color: #000;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .step-number.optional {
+            width: auto;
+            padding: 0 10px;
+            border-radius: 100px;
+            font-size: 11px;
+            letter-spacing: 0.3px;
+        }
+        .step h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+        .step p {
+            color: var(--text-dim);
+            font-size: 14px;
+            line-height: 1.7;
+            margin-bottom: 8px;
+        }
+        .step p:last-child { margin-bottom: 0; }
+
+        .step ol, .step ul {
+            color: var(--text-dim);
+            font-size: 14px;
+            line-height: 1.7;
+            margin: 8px 0 8px 20px;
+        }
+        .step li { margin-bottom: 6px; }
+        .step li:last-child { margin-bottom: 0; }
+
+        .step-code {
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 12px 16px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            color: var(--green);
+            margin: 12px 0;
+            word-break: break-all;
+            user-select: all;
+        }
+
+        .step-note {
+            background: rgba(88, 166, 255, 0.08);
+            border: 1px solid rgba(88, 166, 255, 0.15);
+            border-radius: 8px;
+            padding: 12px 16px;
+            font-size: 13px;
+            color: var(--blue);
+            margin-top: 16px;
+        }
+
+        .step-warning {
+            background: rgba(248, 81, 73, 0.08);
+            border: 1px solid rgba(248, 81, 73, 0.15);
+            border-radius: 8px;
+            padding: 12px 16px;
+            font-size: 13px;
+            color: var(--red);
+            margin-top: 16px;
+        }
+
+        .step-best {
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 14px 16px;
+            margin-top: 16px;
+        }
+        .step-best-label {
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 6px;
+        }
+        .step-best p {
+            font-size: 13px;
+            color: var(--text-dim);
+        }
+        .step-img-snap {
+            display: block;
+            width: 100%;
+            max-width: 365px;
+            margin: 14px auto;
+            border-radius: 10px;
+            border: 1px solid var(--border);
+        }
+
+        kbd {
+            display: inline-block;
+            padding: 2px 8px;
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            color: var(--text);
+        }
+
+        strong { color: var(--text); }
+
+        .step-img {
+            width: 100%;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            margin: 16px 0 8px;
+        }
+        /* Small game-tile screenshot: shown at its real size so it stays sharp */
+        .step-img-tile {
+            display: block;
+            width: 100%;
+            max-width: 194px;
+            margin: 18px auto 6px;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+        }
+        .img-caption {
+            text-align: center;
+            font-size: 12px;
+            color: var(--text-dim);
+            margin-bottom: 4px;
+        }
+
+        /* Connector line between steps */
+        .step-connector {
+            width: 2px;
+            height: 20px;
+            background: var(--border);
+            margin: 0 auto;
+        }
+
+        /* Support */
+        .support {
+            text-align: center;
+            padding: 40px 24px 60px;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        .support p {
+            color: var(--text-dim);
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+        .support a {
+            color: var(--green);
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .support a:hover { text-decoration: underline; }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 24px;
+            border-top: 1px solid var(--border);
+            color: var(--text-dim);
+            font-size: 12px;
+        }
+
+        @media (max-width: 600px) {
+            .hero h1 { font-size: 28px; }
+            .step { padding: 24px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="nav">
+        <a href="/" class="nav-logo">
+            <span class="bettr">Bettr</span><span class="bot">Bot</span><span class="dot-com">.com</span>
+        </a>
+        <a href="/" class="nav-back">← Back to Home</a>
+    </nav>
+
+    <div class="hero">
+        <h1>How to Connect</h1>
+        <p>Connect BettrBot to Blackjack with Surrender on DraftKings Casino, map the game's buttons once, and let the bot play.</p>
+    </div>
+
+    <div class="video-section">
+        <div class="video-container">
+            <video controls playsinline>
+                <source src="rileyssitep2-setup-tutorial.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+    </div>
+
+    <div class="steps">
+
+        <div class="step">
+            <div class="step-number">1</div>
+            <h3>Click Connect</h3>
+            <p>In BettrBot, choose your browser (<strong>Chrome</strong>, <strong>Edge</strong> or <strong>Brave</strong>) and click <strong>Connect</strong>. A new browser window opens on DraftKings Casino.</p>
+        </div>
+
+        <div class="step-connector"></div>
+
+        <div class="step">
+            <div class="step-number">2</div>
+            <h3>Log In to DraftKings</h3>
+            <p>In the window that opened, log in to your <strong>DraftKings Casino</strong> account. If DraftKings asks you to verify your location, finish that before moving on.</p>
+        </div>
+
+        <div class="step-connector"></div>
+
+        <div class="step">
+            <div class="step-number">3</div>
+            <h3>Open Blackjack with Surrender</h3>
+            <p>Search for <strong>Blackjack</strong> and open <strong>Blackjack with Surrender</strong>. Look for this tile:</p>
+            <img class="step-img-tile" src="DKGAME.png" alt="The Blackjack with Surrender game tile on DraftKings Casino">
+            <div class="img-caption">Blackjack with Surrender</div>
+        </div>
+
+        <div class="step-connector"></div>
+
+        <div class="step">
+            <div class="step-number">4</div>
+            <h3>Place a Bet and Deal a Hand</h3>
+            <p>Place a bet and deal one hand yourself. Once BettrBot sees the game, the status turns <strong>Connected</strong> and the Activity Log shows <strong>Blackjack game detected</strong>.</p>
+        </div>
+
+        <div class="step-connector"></div>
+
+        <div class="step">
+            <div class="step-number">5</div>
+            <h3>Map the Game's Buttons (one time)</h3>
+            <p>BettrBot plays by clicking the real buttons with your mouse, so it needs to know where they are on your screen. In the <strong>Button Mapping</strong> panel:</p>
+            <ol>
+                <li>Click <strong>Map (F8)</strong>.</li>
+                <li>Click a button name in the list, for example <strong>Hit</strong>.</li>
+                <li>In the game, hover over the <strong>top-left corner</strong> of that button and press <kbd>F8</kbd>. Then hover over its <strong>bottom-right corner</strong> and press <kbd>F8</kbd> again. The row turns green.</li>
+                <li>Do the same for the rest: <strong>Double Down</strong>, <strong>Stand</strong>, <strong>Split</strong>, <strong>Insurance NO</strong> and <strong>Rebet &amp; Deal</strong>.</li>
+                <li>Type a name for your mapping and click <strong>Save</strong>. It loads automatically next time.</li>
+            </ol>
+            <div class="step-best">
+                <div class="step-best-label">Best Practice</div>
+                <p>Use Windows <strong>Snap Layouts</strong> to place the game window, so it lands in the exact same spot every time and your mapping keeps lining up. Hover over the window's maximize button (or press <kbd>Win</kbd> + <kbd>Z</kbd>) and pick a layout, for example BettrBot on one side and the game on the other.</p>
+                <img class="step-img-snap" src="windowsmap.png" alt="Windows Snap Layouts menu showing the split-screen layout options">
+                <p>If the game window ever moves or the browser zoom changes, map the buttons again.</p>
+            </div>
+        </div>
+
+        <div class="step-connector"></div>
+
+        <div class="step">
+            <div class="step-number optional">OPTIONAL</div>
+            <h3>Mix In Low and High Bets</h3>
+            <p>Want the bot to bet a little less or more now and then? Fill in <strong>Low Bet Size</strong> and/or <strong>High Bet Size</strong>, then map these extra buttons under <strong>Bet controls</strong>:</p>
+            <ul>
+                <li><strong>New Game</strong>: on the screen after a hand finishes.</li>
+                <li><strong>Deal</strong>, <strong>Bet spot (circle)</strong> and the <strong>chips</strong> you'll use: on the <strong>Place Your Bets</strong> screen.</li>
+            </ul>
+        </div>
+
+        <div class="step-connector"></div>
+
+        <div class="step">
+            <div class="step-number">6</div>
+            <h3>Press Start</h3>
+            <p>Set your <strong>Bet Size</strong>, press <strong>Start</strong>, then deal the first hand yourself. From there BettrBot plays every hand and deals the next one for you.</p>
+        </div>
+
+    </div>
+
+    <div class="support">
+        <p>Need help? Text us anytime.</p>
+        <a href="sms:+12243044728">(224) 304-4728</a>
+    </div>
+
+    <div class="footer">
+        © 2026 BettrBot. For entertainment purposes only.
+    </div>
+
+</body>
+</html>
